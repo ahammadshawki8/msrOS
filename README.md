@@ -4,7 +4,7 @@
 lets you start, resume, and ship a project without re-briefing Claude from scratch.
 
 Built for a specific workflow: rapid hackathon builds, AI/agent engineering, and
-research prototypes. Three plugins, 15 skills, 2 agents. No project code ever lives
+research prototypes. Three plugins, 16 skills, 2 agents. No project code ever lives
 here — only reusable workflows.
 
 ---
@@ -29,7 +29,7 @@ your own submission before you hit submit.
   decisions worse, not better.
 - **Not a memory daemon.** No SQLite, no vector store, no background worker. One hook,
   one Markdown file.
-- **Not a mega-library.** 15 skills, not 281. The restraint is the point.
+- **Not a mega-library.** 16 skills, not 281. The restraint is the point.
 
 ---
 

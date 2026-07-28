@@ -79,6 +79,15 @@ diagnose later.
 7. **Never fabricate extracted data.** Skills that scrape or extract (`/msr-hack-init`)
    must fall back or ask rather than invent. Skills that score against extracted data
    (`judge-simulator`, `/msr-submit`) must refuse to run when that data is missing.
+8. **Do not declare `hooks` in `plugin.json`.** `hooks/hooks.json` is auto-discovered.
+   Declaring it as well double-loads the file and the whole plugin fails with
+   `Duplicate hooks file detected`. Only reference *additional* hook files there.
+   Note that `claude plugin validate` will happily demand the path exist — validation
+   and runtime disagree on this, and only an install catches it.
+9. **Plugin `source` paths are full and explicit**: `./plugins/msr-core`. Do not use
+   `metadata.pluginRoot`. A source beginning with `./` resolves against the marketplace
+   root and bypasses `pluginRoot`, so setting both silently produces a path that does
+   not exist.
 
 ## Validation
 
@@ -95,7 +104,18 @@ and omitting `version` is intentional (convention 5). That version notice is the
 warning you may ignore — fix any other one, because the reason to want `--strict`,
 catching a misspelled field name, still applies.
 
-Test the marketplace locally with `/plugin marketplace add ./` before pushing.
+**Validation is not sufficient.** It passes on manifests that fail at load. Always do a
+real install before pushing:
+
+```bash
+claude plugin marketplace add "./"      # the ./ is required; a bare . is rejected
+claude plugin marketplace update msros
+claude plugin install msr-core@msros
+claude plugin list                      # must show "enabled", not "failed to load"
+```
+
+`claude plugin list` is the only check that catches duplicate hook declarations and
+unresolvable source paths.
 
 ## Reference
 

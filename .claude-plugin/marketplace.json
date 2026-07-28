@@ -5,14 +5,11 @@
     "name": "Ahammad Shawki",
     "url": "https://github.com/ahammadshawki8"
   },
-  "metadata": {
-    "pluginRoot": "./plugins"
-  },
   "allowCrossMarketplaceDependenciesOn": ["claude-plugins-official"],
   "plugins": [
     {
       "name": "msr-core",
-      "source": "./msr-core",
+      "source": "./plugins/msr-core",
       "displayName": "msrOS Core",
       "description": "Session continuity, CLAUDE.md archetypes, and stack-aware quality gates",
       "category": "workflow",
@@ -20,7 +17,7 @@
     },
     {
       "name": "msr-hack",
-      "source": "./msr-hack",
+      "source": "./plugins/msr-hack",
       "displayName": "msrOS Hackathon",
       "description": "Devpost pipeline: rules ingestion, scoping, demo direction, writeup, judge simulation",
       "category": "workflow",
@@ -29,7 +26,7 @@
     },
     {
       "name": "msr-ai",
-      "source": "./msr-ai",
+      "source": "./plugins/msr-ai",
       "displayName": "msrOS AI Engineering",
       "description": "MCP scaffolding, eval harnesses, grounding audits, and experiment logging",
       "category": "workflow",

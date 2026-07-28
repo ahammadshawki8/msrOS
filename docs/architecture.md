@@ -38,7 +38,7 @@ single field is the highest-leverage token decision in the repo.
 
 ## Why it has so few components
 
-15 skills and 2 agents, against ecosystem repos shipping 281 skills and 67 agents.
+16 skills and 2 agents, against ecosystem repos shipping 281 skills and 67 agents.
 
 That is deliberate. Every added skill competes for selection with every existing one.
 Two skills that both plausibly match a task make Claude's choice worse, not better — and
@@ -78,6 +78,17 @@ and no error message**. It is the most common structural mistake and the hardest
 diagnose, because everything reports success.
 
 Each skill's frontmatter `name` must match its directory name.
+
+`hooks/hooks.json` is **auto-discovered**. Do not also declare it in `plugin.json` — the
+file loads twice and the whole plugin fails with `Duplicate hooks file detected`. The
+manifest's `hooks` field is only for *additional* hook files at non-standard paths.
+
+Plugin `source` paths in `marketplace.json` are full and explicit —
+`./plugins/msr-core`. `metadata.pluginRoot` is deliberately unused: a source beginning
+with `./` resolves against the marketplace root and bypasses `pluginRoot`, so setting
+both silently yields a path that does not exist.
+
+Neither of these is caught by `claude plugin validate`. Both were found by installing.
 
 ## Dependencies
 

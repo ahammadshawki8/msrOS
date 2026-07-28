@@ -78,8 +78,10 @@ To work on msrOS itself, add the working copy as a marketplace instead of the Gi
 remote:
 
 ```bash
-/plugin marketplace add ./
+claude plugin marketplace add "./"
 ```
+
+The `./` is required — a bare `.` is rejected as an invalid source format.
 
 Relative plugin sources resolve against the marketplace root — the directory containing
 `.claude-plugin/`. After editing, run `/reload-plugins`.
@@ -96,6 +98,16 @@ Do **not** pass `--strict`. It promotes the "No version specified" warning to an
 and omitting `version` is deliberate. That notice is the only warning you may ignore —
 fix any other one, since the reason to want `--strict`, catching a misspelled field name,
 still applies.
+
+**Validation alone is not enough.** It passes on manifests that fail at load. Two real
+failures in this repo — a duplicate hooks declaration and an unresolvable source path —
+both passed validation and only surfaced on install. Always finish with:
+
+```bash
+claude plugin marketplace update msros
+claude plugin install msr-core@msros
+claude plugin list          # must read "enabled", not "failed to load"
+```
 
 ## Troubleshooting
 
@@ -114,6 +126,36 @@ If you still see this, your cached marketplace copy is stale. Run
 `/plugin marketplace update msros`. As a workaround you can install the dependency
 yourself first — `/plugin install superpowers@claude-plugins-official` — which satisfies
 the constraint directly.
+
+### `failed to load` — Duplicate hooks file detected
+
+```
+Hook load failed: Duplicate hooks file detected: ./hooks/hooks.json resolves to
+already-loaded file ... The standard hooks/hooks.json is loaded automatically.
+```
+
+`hooks/hooks.json` is auto-discovered. Declaring it *again* as `"hooks":
+"./hooks/hooks.json"` in `plugin.json` loads it twice and fails the entire plugin.
+Remove the field.
+
+Only reference `hooks` in the manifest for *additional* hook files at non-standard
+paths.
+
+`claude plugin validate` does not catch this — it validates that the declared path
+exists, which it does. Only `claude plugin list` after an install surfaces it.
+
+### `Source path does not exist` on install
+
+The plugin `source` in `marketplace.json` did not resolve. A source beginning with `./`
+resolves against the marketplace root and **bypasses `metadata.pluginRoot`** — so
+setting both `"pluginRoot": "./plugins"` and `"source": "./msr-core"` produces
+`<root>/msr-core`, which does not exist.
+
+Use full explicit paths and no `pluginRoot`:
+
+```json
+{ "name": "msr-core", "source": "./plugins/msr-core" }
+```
 
 ### Plugin installs but no skills appear
 

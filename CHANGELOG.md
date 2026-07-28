@@ -49,6 +49,19 @@ Plugin versions are resolved from the git commit SHA rather than a pinned
   `docs/usage.md`, `docs/token-discipline.md`, `docs/roadmap.md`,
   `examples/hackathon-walkthrough.md`, and the design spec.
 
+### Fixed
+
+- Plugin `source` paths in `marketplace.json` were `./msr-core` alongside
+  `metadata.pluginRoot: "./plugins"`. A source beginning with `./` resolves against the
+  marketplace root and bypasses `pluginRoot`, so installs failed with `Source path does
+  not exist`. Now full explicit paths, and `pluginRoot` is gone.
+- `msr-core` declared `"hooks": "./hooks/hooks.json"` in its manifest. That path is
+  auto-discovered, so the file loaded twice and the plugin failed entirely with
+  `Duplicate hooks file detected`. The declaration is removed.
+
+Both defects passed `claude plugin validate` and surfaced only on a real install.
+Validation is now documented as necessary but not sufficient.
+
 ### Notes
 
 - Hook and helper scripts are Node (`.mjs`). A `.sh` hook silently no-ops on Windows.

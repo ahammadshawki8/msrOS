@@ -112,16 +112,23 @@ msrOS/
     "name": "Ahammad Shawki",
     "url": "https://github.com/ahammadshawki8"
   },
-  "metadata": { "pluginRoot": "./plugins" },
+  "allowCrossMarketplaceDependenciesOn": ["claude-plugins-official"],
   "plugins": [
-    { "name": "msr-core", "source": "./msr-core", "category": "workflow" },
-    { "name": "msr-hack", "source": "./msr-hack", "category": "workflow",
+    { "name": "msr-core", "source": "./plugins/msr-core", "category": "workflow" },
+    { "name": "msr-hack", "source": "./plugins/msr-hack", "category": "workflow",
       "defaultEnabled": false },
-    { "name": "msr-ai",   "source": "./msr-ai",   "category": "workflow",
+    { "name": "msr-ai",   "source": "./plugins/msr-ai",   "category": "workflow",
       "defaultEnabled": false }
   ]
 }
 ```
+
+**No `metadata.pluginRoot`.** A source beginning with `./` resolves against the
+marketplace root and bypasses `pluginRoot`; setting both yields a path that does not
+exist and the install fails with `Source path does not exist`. Full explicit paths only.
+
+`allowCrossMarketplaceDependenciesOn` is required, not optional — without it the
+dependencies on `superpowers` and `feature-dev` are blocked at install.
 
 The marketplace name `msros` is not on Anthropic's reserved list.
 
@@ -302,7 +309,19 @@ downstream reads its output. Most hackathon losses are criteria misses, not code
   error, and omitting `version` is deliberate (§6). The one acceptable warning is that
   version notice; any other warning must be fixed rather than tolerated, since the
   reason to want `--strict` — catching a misspelled field name — still applies.
-- Marketplace loads from a local path: `/plugin marketplace add ./` then install each plugin.
+- **A real install must succeed.** Validation is necessary but not sufficient — it
+  passes on manifests that fail at load. Two defects in this repo, a duplicate hooks
+  declaration and an unresolvable source path, both passed validation and surfaced only
+  on install:
+
+  ```bash
+  claude plugin marketplace add "./"     # bare `.` is rejected
+  claude plugin install msr-core@msros
+  claude plugin list                     # must read "enabled", not "failed to load"
+  ```
+
+- `hooks/hooks.json` must **not** be declared in `plugin.json`; it is auto-discovered,
+  and declaring it double-loads the file and fails the plugin.
 - Every skill's frontmatter `name` matches its directory name.
 - `state-digest.mjs` covered by cases: file present, absent, malformed markers, empty digest.
 - Smoke test: on a scratch project, `/msr-init` → `/msr-session-start` → `/msr-handoff`
