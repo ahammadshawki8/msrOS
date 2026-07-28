@@ -1,0 +1,18 @@
+{
+  "name": "msr-core",
+  "displayName": "msrOS Core",
+  "description": "Session continuity, CLAUDE.md archetypes, and stack-aware quality gates",
+  "author": {
+    "name": "Ahammad Shawki",
+    "url": "https://github.com/ahammadshawki8"
+  },
+  "homepage": "https://github.com/ahammadshawki8/msrOS",
+  "repository": "https://github.com/ahammadshawki8/msrOS",
+  "license": "MIT",
+  "keywords": ["session", "claude-md", "quality-gates", "continuity", "handoff"],
+  "hooks": "./hooks/hooks.json",
+  "dependencies": [
+    { "name": "superpowers", "marketplace": "claude-plugins-official" },
+    { "name": "feature-dev", "marketplace": "claude-plugins-official" }
+  ]
+}

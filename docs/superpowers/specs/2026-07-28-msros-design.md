@@ -290,7 +290,12 @@ downstream reads its output. Most hackathon losses are criteria misses, not code
 
 ## 12. Validation
 
-- `claude plugin validate ./plugins/<name> --strict` passes for all three plugins.
+- `claude plugin validate ./plugins/<name>` exits 0 for all three plugins.
+
+  **Not `--strict`.** `--strict` promotes the "No version specified" warning to an
+  error, and omitting `version` is deliberate (§6). The one acceptable warning is that
+  version notice; any other warning must be fixed rather than tolerated, since the
+  reason to want `--strict` — catching a misspelled field name — still applies.
 - Marketplace loads from a local path: `/plugin marketplace add ./` then install each plugin.
 - Every skill's frontmatter `name` matches its directory name.
 - `state-digest.mjs` covered by cases: file present, absent, malformed markers, empty digest.

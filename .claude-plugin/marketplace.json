@@ -1,0 +1,40 @@
+{
+  "name": "msros",
+  "description": "Reusable Claude Code workflows for hackathons, AI engineering, and session continuity",
+  "owner": {
+    "name": "Ahammad Shawki",
+    "url": "https://github.com/ahammadshawki8"
+  },
+  "metadata": {
+    "pluginRoot": "./plugins"
+  },
+  "allowCrossMarketplaceDependenciesOn": ["claude-plugins-official"],
+  "plugins": [
+    {
+      "name": "msr-core",
+      "source": "./msr-core",
+      "displayName": "msrOS Core",
+      "description": "Session continuity, CLAUDE.md archetypes, and stack-aware quality gates",
+      "category": "workflow",
+      "tags": ["session", "claude-md", "quality-gates", "continuity"]
+    },
+    {
+      "name": "msr-hack",
+      "source": "./msr-hack",
+      "displayName": "msrOS Hackathon",
+      "description": "Devpost pipeline: rules ingestion, scoping, demo direction, writeup, judge simulation",
+      "category": "workflow",
+      "tags": ["hackathon", "devpost", "demo", "judging"],
+      "defaultEnabled": false
+    },
+    {
+      "name": "msr-ai",
+      "source": "./msr-ai",
+      "displayName": "msrOS AI Engineering",
+      "description": "MCP scaffolding, eval harnesses, grounding audits, and experiment logging",
+      "category": "workflow",
+      "tags": ["mcp", "rag", "eval", "grounding", "benchmark"],
+      "defaultEnabled": false
+    }
+  ]
+}
