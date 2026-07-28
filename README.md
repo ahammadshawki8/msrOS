@@ -308,19 +308,32 @@ Longer notes in [`docs/token-discipline.md`](docs/token-discipline.md).
 
 ## Status
 
-msrOS is under active development. Phase 1 of 6 is complete.
+All six build phases complete — **16 skills, 2 agents, 1 hook, 7 archetypes.**
 
 | Phase | Contents | Status |
 |---|---|---|
-| 1 | Repo skeleton, marketplace + plugin manifests, docs | ✅ done |
-| 2 | `msr-core` skills, `STATE.md`, SessionStart hook | ⬜ next |
-| 3 | Seven `CLAUDE.md` archetypes | ⬜ |
-| 4 | `msr-hack` — 5 skills + `judge-simulator` | ⬜ |
-| 5 | `msr-ai` — 5 skills + `eval-adversary` | ⬜ |
-| 6 | Full docs + worked hackathon example | ⬜ |
+| 1 | Repo skeleton, marketplace + plugin manifests | ✅ |
+| 2 | `msr-core` skills, `STATE.md`, SessionStart hook | ✅ |
+| 3 | Seven `CLAUDE.md` archetypes | ✅ |
+| 4 | `msr-hack` — 5 skills + `judge-simulator` | ✅ |
+| 5 | `msr-ai` — 5 skills + `eval-adversary` | ✅ |
+| 6 | Full docs + worked hackathon example | ✅ |
 
-Commands above are documented as designed; only phases marked done are installable
-today. Full design: [`docs/superpowers/specs/2026-07-28-msros-design.md`](docs/superpowers/specs/2026-07-28-msros-design.md).
+**Not yet proven on a live event.** `/msr-hack-init` has been built against Devpost's
+page structure but not run on a real one, and the 3-hour submission-tail default is
+experience, not measurement. See [`docs/roadmap.md`](docs/roadmap.md).
+
+## Documentation
+
+| Doc | Covers |
+|---|---|
+| [installation.md](docs/installation.md) | Install, per-project enabling, updating, troubleshooting |
+| [usage.md](docs/usage.md) | The four loops in detail |
+| [architecture.md](docs/architecture.md) | Why three plugins, how loading works, the STATE.md mechanism |
+| [token-discipline.md](docs/token-discipline.md) | Practices, ordered by saving |
+| [roadmap.md](docs/roadmap.md) | What's next and what is explicitly not planned |
+| [hackathon-walkthrough.md](examples/hackathon-walkthrough.md) | A full 48-hour run, hour by hour |
+| [design spec](docs/superpowers/specs/2026-07-28-msros-design.md) | The complete design |
 
 ---
 
