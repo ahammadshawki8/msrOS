@@ -159,7 +159,7 @@ resumption truth, structured for index-then-fetch:
 # Project State
 
 <!-- msr:digest:start -->
-**Project:** Doclyst · **Archetype:** hackathon · **Updated:** 2026-07-28
+**Project:** Doclyst | **Archetype:** hackathon | **Updated:** 2026-07-28
 **Now:** OCR fallback path returns empty on scanned PDFs
 **Next:** Add PaddleOCR confidence threshold + OCR.Space fallback trigger
 **Blocked:** none

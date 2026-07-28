@@ -190,7 +190,7 @@ maintains it, and you rarely touch it by hand.
 # Project State
 
 <!-- msr:digest:start -->
-**Project:** Doclyst · **Archetype:** hackathon · **Updated:** 2026-07-28
+**Project:** Doclyst | **Archetype:** hackathon | **Updated:** 2026-07-28
 **Now:** OCR fallback path returns empty on scanned PDFs
 **Next:** Add PaddleOCR confidence threshold + OCR.Space fallback trigger
 **Blocked:** none
