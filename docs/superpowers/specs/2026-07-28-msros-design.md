@@ -148,7 +148,12 @@ plugins/msr-core/
 
 ## 7. Plugin: `msr-core`
 
-Always enabled. Five skills, **zero agents**, one hook.
+Always enabled. Six skills, **zero agents**, one hook.
+
+Two entry points, because greenfield and mid-project adoption are genuinely different
+problems: `msr-init` imposes an archetype template, which is right for an empty repo and
+wrong for one that already has practice of its own. `msr-adopt` derives from evidence
+and asks, rather than prescribing.
 
 ### 7.1 `docs/STATE.md` — the continuity artifact
 
@@ -183,7 +188,8 @@ claude-mem principle without claude-mem's machinery.
 
 | Skill | Purpose | Terminal evidence |
 |---|---|---|
-| `msr-init` | Detect stack, choose archetype, write `CLAUDE.md` from template, create `docs/STATE.md`, record gate commands. | `CLAUDE.md` and `docs/STATE.md` exist; detected stack echoed back. |
+| `msr-init` | **Greenfield only.** Detect stack, choose archetype, write `CLAUDE.md` from template, create `docs/STATE.md`, record gate commands. | `CLAUDE.md` and `docs/STATE.md` exist; detected stack echoed back. |
+| `msr-adopt` | **Mid-project.** Reconstruct state from git history, uncommitted work, and a six-question interview. Infers conventions from the code rather than imposing a template; verifies gate commands by running them; preserves any existing `CLAUDE.md`. | Every listed convention traceable to a named file; every gate command actually executed; summary played back and corrected by the user. |
 | `msr-session-start` | Read digest + STATE.md + `git log -10`, summarize state, **propose exactly one next task and stop for approval**. | A single named task, awaiting user approval. Does not begin work. |
 | `msr-handoff` | Update STATE.md (digest + decisions + changes), update CLAUDE.md if conventions changed, propose a commit message. | `git diff --stat` shown; STATE.md digest timestamp updated. |
 | `msr-gate` | Stack-aware quality gates. Detects Django / Flask / FastAPI / Next / Vite-React / Flutter and runs that stack's typecheck, lint, build, test. | Each gate's actual command output, pass or fail. Never "looks good." |

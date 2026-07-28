@@ -57,6 +57,34 @@ claude plugin enable msr-ai@msros --scope project
 
 ---
 
+## Already halfway through a project?
+
+If you forgot to set msrOS up and you're 50% in, **do not run `/msr-init`.** It's built
+for greenfield and it imposes an archetype template — which is exactly wrong for a repo
+that already has conventions of its own.
+
+Run **`/msr-adopt`** instead. It:
+
+- surveys `git log`, uncommitted changes, and branches to work out what's in flight —
+  your uncommitted diff is the strongest signal of what `Now:` should say
+- **infers conventions from your actual code**, not from a template, and where your repo
+  disagrees with the archetype default, your repo wins and the difference gets recorded
+- **runs your gate commands instead of trusting `package.json`** — mid-flight projects
+  have renamed and broken scripts constantly
+- asks you six questions that no artifact can answer: what you're on, what's next,
+  what's blocked, what decision you'd be annoyed to see reversed, what's deliberately
+  rough, and whether there's a deadline
+- preserves any existing `CLAUDE.md` verbatim under `## Existing notes`
+- marks anything it inferred but couldn't confirm, then **plays the whole summary back
+  for you to correct** before finishing
+
+That fourth question is the valuable one. Git records what changed; it never records
+why. Reversed decisions are the most expensive thing a fresh session does.
+
+After `/msr-adopt`, you're on the normal loop below — skip step 1.
+
+---
+
 ## Starting a new project
 
 This is the main flow. Four commands, in order.
@@ -219,7 +247,8 @@ for roughly 5% of the tokens.
 
 | Command | Plugin | What it does |
 |---|---|---|
-| `/msr-init` | core | Bootstrap `CLAUDE.md` + `STATE.md` for a new project |
+| `/msr-init` | core | Bootstrap `CLAUDE.md` + `STATE.md` for a **new** project |
+| `/msr-adopt` | core | Onboard a project **already underway** — reconstructs state from git + interview |
 | `/msr-session-start` | core | Summarize state, propose one next task, stop |
 | `/msr-gate` | core | Stack-aware typecheck / lint / build / test |
 | `/msr-handoff` | core | Update state, propose commit message |

@@ -17,12 +17,18 @@ silent.
 
 ## When to Use
 
-- Starting a new repo.
-- Adopting msrOS into a repo that has no `docs/STATE.md`.
-- A user asks to "set up", "initialize", or "onboard" a project for Claude Code.
+- Starting a new repo, or one with only scaffolding in it.
+- A user asks to "set up", "initialize", or "onboard" a fresh project for Claude Code.
 
-**Do not use** when `docs/STATE.md` already exists. Run `/msr-session-start` instead. If
-the user explicitly wants to start over, say what will be overwritten and confirm first.
+**Do not use** when:
+
+- `docs/STATE.md` already exists → `/msr-session-start`.
+- **The project is already underway** — real commit history, working features, existing
+  conventions → **`/msr-adopt`**. This skill imposes an archetype template, which is
+  correct for greenfield and wrong for a repo that already has practice of its own.
+
+If the user explicitly wants to start over on an initialized repo, say what will be
+overwritten and confirm first.
 
 ## Process
 
