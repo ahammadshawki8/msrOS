@@ -117,8 +117,10 @@ attempted at hour 44 is a deploy that fails at hour 44.
 A decision from hour 9, recorded in `STATE.md`:
 
 ```markdown
-- [D3] ERNIE primary with Groq Llama 3.3 70B fallback — ERNIE rate-limits at
-  60 rpm and we hit it during testing. Fallback logs every switch.
+- [D3] Groq Llama 3.3 70B primary with OpenRouter fallback — Groq rate-limits at
+  30 rpm and we hit it during testing. Fallback logs every switch.
+- [D4] Added the sponsor's vector DB for the sponsor track — HACKATHON.md scores it
+  at 15%. Not used anywhere off the demo path, and it leaves with the event.
 ```
 
 That line becomes a paragraph in the Devpost "Challenges" field at hour 45, when nobody

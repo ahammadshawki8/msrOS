@@ -48,6 +48,10 @@ secret, a broken deploy URL, a missing required deliverable.
 
 - Seed/demo data is committed so the demo is reproducible on a fresh clone.
 - Anything cut is recorded in `.out-of-scope/`, not deleted silently.
+- **Sponsor technology is used only if `docs/HACKATHON.md` records a track or criterion
+  that rewards it.** When it does, using it is mandatory: an unused sponsor tech is the
+  most common way to lose a track you were otherwise winning. When it does not, do not
+  introduce it, and do not inherit it from the last event.
 
 ## Deployment
 

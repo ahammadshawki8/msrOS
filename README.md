@@ -225,7 +225,7 @@ maintains it, and you rarely touch it by hand.
 <!-- msr:digest:end -->
 
 ## Decisions
-- [D1] ERNIE primary, Groq Llama 3.3 70B fallback; ERNIE rate-limits at 60 rpm.
+- [D1] Groq Llama 3.3 70B primary, OpenRouter fallback; Groq rate-limits at 30 rpm.
 
 ## Open threads
 - [T1] gTTS latency >4s for Bengali; consider caching.
