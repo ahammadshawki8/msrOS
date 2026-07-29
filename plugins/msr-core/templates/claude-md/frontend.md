@@ -8,7 +8,7 @@ Frontend application.
 
 ## Stack
 
-<detected stack — React 18 + TypeScript + Tailwind + Vite, or Next.js>
+<detected stack — Next.js + TypeScript + Tailwind, or React + Vite for something small>
 
 ## Commands
 
