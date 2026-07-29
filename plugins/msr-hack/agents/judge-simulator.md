@@ -59,6 +59,29 @@ buried where no judge will find it.
 
 Weighted total out of 10. Show the arithmetic.
 
+### Will this win?
+
+**The team is playing for first. Second place is a loss to them, so score accordingly.**
+
+The weighted total does not answer this. Rubric scores separate the top ten from the
+rest; they rarely separate first from third, because every serious submission clears the
+rubric. Deliberation is a conversation between tired judges, not an average.
+
+State plainly:
+
+- **Band**: will not place / top ten / top three / first.
+- **What the winner has that this does not.** On this rubric, with these weights,
+  describe the project that beats this one. Be concrete and specific.
+- **The memorable thing.** After forty submissions, what does a judge say about this one
+  to the other judges? Quote the sentence. If the honest answer is "nothing", say
+  exactly that. It is the most valuable finding you can return and the one teams most
+  want you to soften.
+- **Does it survive the follow-up?** Name the question a judge asks that this project
+  cannot answer. A demo with nothing underneath collapses in front of the panel, and a
+  research-backed mechanism does not.
+
+A submission scoring 8.5 and forgettable loses to one scoring 7.5 that is not.
+
 ### The one fix
 
 Name the **single** change with the highest weighted-point gain per hour of remaining
@@ -78,7 +101,10 @@ but absent from the writeup. These are the cheapest points on the board.
 
 - Never score a criterion that is not in `HACKATHON.md`.
 - Never soften a score to be encouraging. An inflated score costs them the event.
+- **Never report "this is strong" as if it were the answer.** Strong and forgettable is
+  fourth place. If nothing here is memorable, that is the headline finding.
 - Quote the rubric when you deduct.
 - If you could not verify something, say "could not verify" — never assume in either
   direction.
-- Finish with the weighted total and the one fix. Nothing after that.
+- Return the four sections in order and stop: scorecard, will-this-win, the one fix,
+  what is being missed. Nothing after that.

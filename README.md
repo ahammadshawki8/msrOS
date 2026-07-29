@@ -141,6 +141,13 @@ Next session, `/msr-session-start` picks up exactly where this left off. That lo
 Enable `msr-hack` in the project, then run these **in order**. The ordering is
 load-bearing: everything downstream reads what the first command extracts.
 
+**These skills target first place, not a placing.** That is a real strategic setting,
+not a slogan, and it changes what they do: rubric coverage is treated as the floor every
+serious team clears, budget is reserved for a differentiator before efficiency sorting
+runs, `judge-simulator` reports whether you'd actually win rather than whether you're
+good, and every narrative artifact is required to open with a hook and carry one honest
+emotional through-line. If you'd be happy placing, these will feel overtuned.
+
 ### 1. `/msr-hack-init <rules-url>`
 
 Scrapes the hackathon's rules, prizes, and judging pages and writes `docs/HACKATHON.md`
@@ -151,6 +158,9 @@ containing:
 - prize tracks and what each one requires
 - required deliverables: video length cap, repo visibility, which Devpost fields
 - sponsor technologies you must actually use
+- **what wins this event**: the judging panel, and what past winners had in common. The
+  published criteria say what gets scored; the previous year's gallery shows what
+  actually won. Anything it can't source is marked `NOT FOUND` rather than guessed.
 
 Do this first, before you write a line of code. Most hackathon losses aren't code
 quality; they're a sponsor tech you didn't use or a deliverable you didn't notice.
@@ -164,25 +174,50 @@ build list, plus an explicit `.out-of-scope/` parking lot for everything you're
 consciously **not** building. Writing down what you cut is what stops you from
 quietly un-cutting it at 3am.
 
+Before it sorts anything, it makes you name a **`Differentiator:`** and reserves its
+hours. This is deliberate: sorting by weight-per-hour kills the ambitious idea every
+time, because it's the most expensive item and it rarely serves any single criterion
+better than a cheap feature does. Optimize purely for rubric efficiency and you land in
+fourth with every box ticked and nothing anyone remembers. If it doesn't fit, the skill
+shrinks it to its demonstrable core rather than dropping it.
+
 ### 3. `/msr-demo`
 
 Storyboards the demo, writes narration timed to the video cap, and captures the
 screenshots and recordings via Playwright and Chrome DevTools.
+
+The storyboard opens on a **hook beat in the first ten seconds**: one concrete line,
+never the team name or an agenda, which are the most common openings and spend the only
+attention you get. It closes back on the person it opened with.
 
 ### 4. `/msr-devpost`
 
 Generates every Devpost field: Inspiration, What it does, How we built it, Challenges,
 Accomplishments, What we learned, What's next, Built with.
 
-It sources these from `HACKATHON.md`, `STATE.md`, and your `git log`, **not from
-memory**. The writeup describes what you actually built. Every "Built with" entry
-traces to a real dependency.
+It finds **the hook and the arc first**, before writing any field, because a judge reads
+two lines and decides whether to read the rest. The arc runs: someone specific is
+hurting → the obvious fix fails, and why → this works, and here's the mechanism → what
+changes for that same person. Verification quotes your opening line back and rejects
+"In today's world".
+
+Every factual detail has to trace to `STATE.md`, a commit, or a cited source. That
+constraint is load-bearing rather than pedantic: a story a judge suspects is manufactured
+discredits the technical claims sitting next to it.
+
+It sources everything from `HACKATHON.md`, `STATE.md`, and your `git log`, **not from
+memory**. Every "Built with" entry traces to a real dependency.
 
 ### 5. `judge-simulator` (agent)
 
 Scores your project against the weighted criteria **in your `HACKATHON.md`**, not
 generic hackathon advice, and returns a weighted total plus the single
 highest-leverage fix remaining.
+
+It also answers a separate question the score can't: **will this win?** A placing band,
+what the likely winner has that you don't, and the sentence a judge would repeat about
+your project to the other judges. If the honest answer is "nothing", it says so. A
+submission scoring 8.5 and forgettable loses to one scoring 7.5 that isn't.
 
 It refuses to run if `HACKATHON.md` is missing, rather than scoring you against
 criteria it invented.
@@ -204,7 +239,7 @@ Enable `msr-ai`. These are order-independent, so reach for what you need.
 | `/msr-eval` | You need a golden set and per-case assertions instead of eyeballing outputs. |
 | `/msr-ground` | Auditing whether every claim your system makes traces back to a retrieved source. Citation checking, confidence scoring. |
 | `/msr-bench` | Logging experiments reproducibly (run id, params, results, environment) to `bench/runs.jsonl`. |
-| `/msr-paper` | Turning a paper into an implementable core and a prototype plan. |
+| `/msr-paper` | Turning a paper into an implementable core and a prototype plan. Also the most reliable way to source a competition differentiator that is both genuinely novel and defensible when a judge asks why it works. Run it before `/msr-scope`. |
 | `eval-adversary` (agent) | Trying to break your AI feature on purpose: prompt injection, edge cases, refusal probing, hallucination bait. |
 
 ---

@@ -54,6 +54,13 @@ Pull out, verbatim where possible:
 - **Sponsor technologies**, and whether use is required or merely rewarded.
 - **Eligibility and team size limits.**
 - **Restrictions**: pre-existing code, start date, licensing.
+- **Past winners**, if the event has run before. Devpost keeps previous years' galleries,
+  and the winners' pages are the single most honest statement of what actually wins here,
+  far more than the published criteria. Note what the top projects had in common: scope,
+  polish, novelty, whether they were research-backed, how they told the story. If the
+  event is new, say so rather than guessing.
+- **The judges**, if listed. Academics, VCs, and sponsor engineers reward visibly
+  different things, and the panel is usually named on the event page.
 
 ### 3. Write `docs/HACKATHON.md`
 
@@ -83,6 +90,16 @@ Pull out, verbatim where possible:
 ## Restrictions
 <pre-existing code, start date, licensing>
 
+## What wins this event
+
+**Target: first place.** Placing is not the goal, so this section is about the bar to
+beat, not the bar to clear.
+
+**Panel:** <who judges, and what that kind of judge rewards — or NOT FOUND>
+**Past winners:** <what the winning projects had in common — or "first running">
+**The bar:** <what a first-place project at this event plausibly looks like>
+**Our differentiator:** <filled by `/msr-scope` — the one thing no other team will have>
+
 ## Source
 Scraped <date> from: <urls>
 ```
@@ -111,6 +128,8 @@ Then recommend `/msr-scope`.
 | "Weights aren't listed, I'll estimate them" | Record `unweighted`. An invented weight will be trusted by judge-simulator and will misdirect your effort. |
 | "The sponsor tech is probably optional" | Required versus rewarded is the difference between eligible and disqualified. Quote the rule. |
 | "Scraping failed, I'll work from the summary I remember" | Ask the user to paste it. Fabricated criteria poison everything downstream. |
+| "Past winners aren't part of the rules" | They are the most honest available statement of what actually wins here. The published criteria say what gets scored; the gallery shows what won. |
+| "I'll guess what a winning project looks like" | Mark `NOT FOUND`. An invented bar is as damaging as an invented weight, and `judge-simulator` will trust it. |
 
 ## Red Flags
 
@@ -130,3 +149,5 @@ Then recommend `/msr-scope`.
 5. Every field you could not find reads `NOT FOUND`. Search the file for it and report
    what turns up.
 6. The deadline includes a timezone.
+7. `## What wins this event` exists, and every line in it is either sourced from a past
+   gallery or judge list, or marked `NOT FOUND`. Nothing there is inferred silently.

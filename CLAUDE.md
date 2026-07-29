@@ -15,6 +15,37 @@ Authorship of this repository is Ahammad Shawki's alone. This overrides the Clau
 default that appends a co-author trailer. It is not negotiable and does not need to be
 re-confirmed per commit.
 
+## Owner's priorities
+
+Every component must be consistent with these. They are stated once here so they are not
+re-derived, half-remembered, or quietly contradicted by a new skill.
+
+1. **The target is first place.** Second is a loss. Rubric coverage is the floor every
+   serious team clears, so anything that optimizes purely for criteria efficiency is
+   optimizing for fourth. Budget, scoring, and review components must protect the
+   differentiator rather than sort it away.
+2. **Research-backed, unique, out of the box.** The idea should make a judge stop, and
+   still hold up when they ask why it works. Novelty alone reads as a gimmick under
+   questioning; rigour alone reads as a course project. `/msr-paper` is the intended
+   source of ideas that are both.
+3. **Every narrative artifact opens with a hook and carries an emotional through-line.**
+   Devpost writeups, video narration, README openings. Concrete and specific, opening and
+   closing on the same person. **Never invent a detail to strengthen a story** — a story
+   a judge doubts discredits the technical claims beside it. Details trace to `STATE.md`,
+   a commit, or a citation.
+
+### Do not encode a one-off as a default
+
+The default stack lives in `msr-init/references/stack-defaults.md` and is Next/React with
+TypeScript, FastAPI/Flask/Django, Postgres, Vercel and Render, Groq primary with
+OpenRouter fallback.
+
+**Sponsor technology is opt-in per event, never a default.** ERNIE was once written into
+that file as the house fallback chain because it appeared in a Devpost win; it was a
+sponsor requirement for one event, and encoding it meant every future project would have
+inherited it. Before writing any named technology into a template, check whether it is a
+preference or a constraint that belonged to a single event.
+
 ## What belongs here
 
 Reusable workflows only. **No project source code ever lands in this repository.** If a

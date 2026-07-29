@@ -19,6 +19,30 @@ implementing the idea. Confusing the two is why paper reproductions stall.
 - Implementing a technique from a paper.
 - Deciding whether a paper's method is worth using.
 - The user shares a paper and asks what to do with it.
+- **Looking for a competition differentiator.** A recent paper's core mechanism, scaled
+  down to something demonstrable, is the most reliable source of an idea that is both
+  genuinely novel and defensible under questioning. Run this before `/msr-scope` so the
+  differentiator is chosen with its feasibility already checked.
+
+## Using this for a hackathon differentiator
+
+The goal there is first place, and first place needs an idea that is unexpected *and*
+holds up when a judge asks why it works. A paper gives you both: the mechanism is real,
+the reasoning is citable, and almost nobody else in the room will have implemented it.
+
+Two changes to the process when the target is a competition rather than a reproduction:
+
+- **Scale the success criterion to the demo, not to the paper.** You need a result
+  visible in a two-minute video, not a table. A directional result on a small slice is
+  enough, and step 4 already permits this.
+- **Step 3 becomes a hard gate.** In an event you cannot absorb a data or compute
+  blocker. If the honest answer to feasibility is no, say so immediately and find
+  another paper. A differentiator discovered to be infeasible at hour 30 is worse than
+  never having chosen it.
+
+Carry the one-sentence contribution into `docs/SCOPE.md` as the `Differentiator:` line,
+and cite the paper in the Devpost writeup and the video narration. The citation is what
+converts "impressive demo" into "they knew what they were doing".
 
 ## Process
 

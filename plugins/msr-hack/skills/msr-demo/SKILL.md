@@ -41,13 +41,28 @@ A structure that works for a 3-minute cap:
 
 | Segment | Time | Purpose |
 |---|---|---|
-| Problem | 0:00–0:20 | Concretely, who is hurting and how |
-| Solution in one line | 0:20–0:35 | What this is |
-| Live demo | 0:35–2:15 | The actual flow, working, unedited |
-| How it works | 2:15–2:45 | Architecture, and the hard part you solved |
-| Close | 2:45–3:00 | Impact, what's next |
+| Hook | 0:00–0:10 | One concrete, specific line that makes stopping impossible |
+| Problem | 0:10–0:25 | Who is hurting and how |
+| Solution in one line | 0:25–0:40 | What this is |
+| Live demo | 0:40–2:10 | The actual flow, working, unedited |
+| How it works | 2:10–2:45 | Architecture, the hard part, and why the mechanism works |
+| Close | 2:45–3:00 | Back to the person from the hook, then what's next |
 
-The live demo gets the most time. Not slides — the product.
+The live demo gets the most time. Not slides, the product.
+
+**The first ten seconds decide the rest.** A judge on submission 34 has the next video
+queued. Open on the specific uncomfortable thing: a moment, a number that should not be
+true, a sentence someone actually said. Never open with the team name, the project name,
+the agenda, or "Hi, we're team X and today we'll be showing you". Those are the four
+most common openings and all of them spend the only attention you are given.
+
+Close on the same person you opened with. A video that opens on someone and ends on a
+feature list has thrown away its own arc.
+
+Use the differentiator from `docs/SCOPE.md` as the demo's centrepiece, and give the
+"how it works" beat enough room to say *why* the mechanism works. Research-backed
+reasoning shown on screen is what makes a judge believe the result instead of filing it
+as a mock-up.
 
 ### 3. Write the narration
 
@@ -55,10 +70,18 @@ Write it as spoken words, then check the length: **~150 words per minute.** A 3-
 video is about 450 words. Count them and report the count.
 
 Rules that matter:
+- **The first line is the hook.** Concrete and specific, never the team name or an
+  agenda. Write it first and read it aloud; if it does not make you want to hear the
+  next sentence, it will not hold a judge either.
 - Lead with the problem, not the tech stack.
 - Name the hard thing you solved. Judges reward difficulty they can perceive.
-- Never say "as you can see" — describe what is happening instead.
+- Say why the mechanism works, not only that it does. One sentence of grounding beats a
+  minute of claims.
+- Never say "as you can see". Describe what is happening instead.
 - Use the sponsor technology by name if the rubric rewards it.
+- Return to the opening person in the last two lines.
+- Every factual claim in the narration must be true and traceable. Overstating on camera
+  is the one error a judge can catch live, and it costs the technical score too.
 
 ### 4. Capture
 
@@ -91,6 +114,9 @@ capture revealed as broken.
 | "I'll narrate off the cuff" | You will ramble, exceed the cap, and bury the hard part. Write it. |
 | "Everyone knows what the problem is" | Twenty minutes into a judging block, nobody knows. Twenty seconds on the problem. |
 | "No need to check what's on screen" | An API key in a visible terminal is a very bad way to find out. |
+| "I'll introduce the team first" | Ten seconds of the only attention you get, spent on the one thing judges do not score. |
+| "The hook is fluff, the demo is what matters" | The hook is what buys the demo an audience. Skipped hook, skimmed video. |
+| "Second place would still be a great result" | The goal here is first. Build the video for the project that wins, not the one that places. |
 
 ## Red Flags
 
@@ -99,6 +125,10 @@ capture revealed as broken.
 - Credentials, personal data, or stray tabs visible in a capture.
 - Demo relies on data that exists only on your machine.
 - Video is mostly slides.
+- **Opens with the team name, the project name, or an agenda.**
+- No hook beat in the storyboard, or a hook longer than about fifteen seconds.
+- The differentiator is not the centrepiece of the demo segment.
+- Narration claims a result the repo cannot back.
 
 ## Verification
 
@@ -108,3 +138,10 @@ capture revealed as broken.
 4. You reviewed every capture for credentials and personal data — state that you did.
 5. `narration.srt` exists and its final timestamp is within the cap.
 6. The demo runs from seeded data, verifiable on a fresh clone.
+7. **Quote the opening line of the narration.** It must be concrete and specific, and
+   must not be the team name, the project name, or an agenda.
+8. The closing lines return to the person or situation from the hook. Quote both.
+9. The `Differentiator:` from `docs/SCOPE.md` is on screen during the demo segment. Name
+   the beat that shows it.
+10. Every factual claim in the narration traces to something in the repo or a cited
+    source. List each claim and its source.
