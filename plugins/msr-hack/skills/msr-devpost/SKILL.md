@@ -21,11 +21,11 @@ and `docs/STATE.md` do remember. Every claim in the writeup should trace to one 
 
 ### 1. Read the sources
 
-- `docs/HACKATHON.md` — criteria, sponsor tech, required fields.
-- `docs/STATE.md` — decisions and their reasons. This is where "Challenges" comes from.
-- `git log --oneline` for the full event — what was actually built, in order.
-- `docs/SCOPE.md` and `.out-of-scope/` — what was cut, which feeds "What's next".
-- Dependency manifests — `package.json`, `requirements.txt`, `pubspec.yaml` — for
+- `docs/HACKATHON.md`: criteria, sponsor tech, required fields.
+- `docs/STATE.md`: decisions and their reasons. This is where "Challenges" comes from.
+- `git log --oneline` for the full event, what was actually built, in order.
+- `docs/SCOPE.md` and `.out-of-scope/`, what was cut, which feeds "What's next".
+- Dependency manifests, `package.json`, `requirements.txt`, `pubspec.yaml`, for
   "Built with".
 
 ### 2. Find the hook and the arc before writing any field
@@ -54,14 +54,14 @@ claims along with it. Pull details from `STATE.md` and the commits, never invent
 
 ### 3. Write each field
 
-**Inspiration** — opens with the hook, then the concrete problem. A specific person with
+**Inspiration**: opens with the hook, then the concrete problem. A specific person with
 a specific difficulty beats a market-size statistic. If `STATE.md` records the origin,
 use it.
 
-**What it does** — plain language, no stack names. Someone non-technical should
+**What it does**: plain language, no stack names. Someone non-technical should
 understand it. Lead with the outcome for the user.
 
-**How we built it** — the architecture and, prominently, **the hard part** and the
+**How we built it**: the architecture and, prominently, **the hard part** and the
 `Differentiator:` from `docs/SCOPE.md`. If the differentiator is research-backed, name
 the mechanism and cite the source. A judge who can see *why* it works scores it far
 higher than one looking at a result they have to take on faith, and the citation is what
@@ -70,18 +70,18 @@ layer, or a grounding check, that is the paragraph that earns technical-executio
 points. Name every sponsor technology the rubric rewards, in the context where you
 actually used it.
 
-**Challenges we ran into** — real ones, from `STATE.md` decisions and the commits where
+**Challenges we ran into**: real ones, from `STATE.md` decisions and the commits where
 an approach was reversed. "Time management" is not a challenge; it is a filler. A rate
 limit that forced a fallback chain is a challenge.
 
-**Accomplishments we're proud of** — specific and, where possible, measured. "Reduced
+**Accomplishments we're proud of**: specific and, where possible, measured. "Reduced
 extraction errors from 4/4 to 0/4 on the sample set" beats "built a great UI."
 
-**What we learned** — technical, specific, and honest.
+**What we learned**: technical, specific, and honest.
 
-**What's next** — pull from `.out-of-scope/`. You already wrote this down, with reasons.
+**What's next**: pull from `.out-of-scope/`. You already wrote this down, with reasons.
 
-**Built with** — every entry must correspond to a real dependency in the manifests.
+**Built with**: every entry must correspond to a real dependency in the manifests.
 Verify each one.
 
 ### 4. Cross-check against the rubric
@@ -123,6 +123,9 @@ you could not trace to a manifest.
 - A criterion from `HACKATHON.md` with nothing in the writeup addressing it.
 - A sponsor technology mentioned in the writeup but not actually used in the code.
 - Character limits exceeded.
+- **Emoji anywhere in the writeup, or a long dash in any field.** Write the word; use a
+  colon, semicolon, or full stop. Emoji in a submission reads as filler to a judge who
+  has seen it forty times that day.
 - **"Inspiration" opens with a definition, a statistic, or "In today's world".**
 - An opening line that would fit any other submission at the event.
 - A story detail that appears in no commit, no `STATE.md` entry, and no source.
@@ -136,7 +139,7 @@ you could not trace to a manifest.
    from.
 3. Every criterion in `HACKATHON.md` has text addressing it. Show the mapping.
 4. "Challenges" names at least one specific, traceable reversal or constraint.
-5. No field exceeds a stated character limit — show counts for any field that has one.
+5. No field exceeds a stated character limit, show counts for any field that has one.
 6. Every sponsor technology claimed is actually imported somewhere in the codebase.
    Grep for it.
 7. **Quote the first sentence of "Inspiration".** It must name something concrete and

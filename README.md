@@ -324,6 +324,37 @@ in msrOS, not a missing feature.
 
 ---
 
+## House style and design language
+
+Every archetype ships a `## Writing conventions` block, so it lands in each project's own
+`CLAUDE.md`:
+
+- **No long dashes.** No em dash, no en dash, anywhere: prose, tables, headings, commit
+  messages, generated output. Colon before a definition, semicolon or full stop between
+  clauses, parentheses for a genuine aside, "to" for ranges.
+- **No emoji.** Write the word instead (`PASS`, `FAIL`, `Done`). Emoji render differently
+  on every platform and read as unfinished next to real type.
+- **Icons are SVG from one set**, Lucide or Phosphor, inline as components so they
+  inherit `currentColor` and can be animated. Never an icon font, never emoji.
+
+Projects with a UI also inherit
+[`design-language.md`](plugins/msr-core/skills/msr-init/references/design-language.md).
+The brief is minimal and professional, and also kawaii, with real motion. The rule that
+makes those compatible rather than contradictory:
+
+> **Charm comes from shape, motion, and one accent colour. Never from more colours, from
+> decoration, or from emoji.**
+
+Minimal governs the palette and the layout; kawaii governs the geometry and the motion.
+In practice: three or four colour families, an accent kept under roughly 10% of any
+screen, 12 to 20px radius with pill buttons, soft shadows tinted toward the primary,
+overshoot easing at `cubic-bezier(0.34, 1.56, 0.64, 1)`, and `transform`/`opacity`
+animation only.
+
+It is a constraint handed **to** `frontend-design`, not a replacement for it. That plugin
+still owns visual direction; this stops it proposing a look that gets rejected every
+time.
+
 ## Token discipline
 
 Four things, in order of how much they save:
@@ -347,12 +378,12 @@ All six build phases complete: **16 skills, 2 agents, 1 hook, 7 archetypes.**
 
 | Phase | Contents | Status |
 |---|---|---|
-| 1 | Repo skeleton, marketplace + plugin manifests | ✅ |
-| 2 | `msr-core` skills, `STATE.md`, SessionStart hook | ✅ |
-| 3 | Seven `CLAUDE.md` archetypes | ✅ |
-| 4 | `msr-hack`: 5 skills + `judge-simulator` | ✅ |
-| 5 | `msr-ai`: 5 skills + `eval-adversary` | ✅ |
-| 6 | Full docs + worked hackathon example | ✅ |
+| 1 | Repo skeleton, marketplace + plugin manifests | Done |
+| 2 | `msr-core` skills, `STATE.md`, SessionStart hook | Done |
+| 3 | Seven `CLAUDE.md` archetypes | Done |
+| 4 | `msr-hack`: 5 skills + `judge-simulator` | Done |
+| 5 | `msr-ai`: 5 skills + `eval-adversary` | Done |
+| 6 | Full docs + worked hackathon example | Done |
 
 **Not yet proven on a live event.** `/msr-hack-init` has been built against Devpost's
 page structure but not run on a real one, and the 3-hour submission-tail default is

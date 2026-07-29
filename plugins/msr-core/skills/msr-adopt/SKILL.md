@@ -25,8 +25,8 @@ session, and it is worse than having no file at all.
 - Inheriting someone else's repo.
 - The user says they forgot to set up msrOS and are mid-build.
 
-**Do not use** on an empty or near-empty repo — use `/msr-init`. Do not use when
-`docs/STATE.md` already exists — use `/msr-session-start`.
+**Do not use** on an empty or near-empty repo, use `/msr-init`. Do not use when
+`docs/STATE.md` already exists, use `/msr-session-start`.
 
 ## Process
 
@@ -34,10 +34,10 @@ session, and it is worse than having no file at all.
 
 Budget matters here. Do not read the codebase file by file.
 
-- `git log --oneline -100` — the arc of the project.
-- `git log -20 --stat` — which areas are hot right now.
-- `git status --short` and `git diff --stat` — uncommitted work.
-- `git branch -a` — is there work parked on a branch?
+- `git log --oneline -100`: the arc of the project.
+- `git log -20 --stat`: which areas are hot right now.
+- `git status --short` and `git diff --stat`, uncommitted work.
+- `git branch -a`: is there work parked on a branch?
 - Directory listing to two levels.
 - Manifests: `package.json`, `requirements.txt`, `pyproject.toml`, `pubspec.yaml`.
 - Existing `README.md`, `CLAUDE.md`, `AGENTS.md`, `docs/`, `TODO`, `NOTES`.
@@ -50,7 +50,7 @@ is the expensive mistake at this step.
 From the evidence, answer:
 
 - What does this do, and for whom?
-- What stack — detected the same way `/msr-init` detects it.
+- What stack, detected the same way `/msr-init` detects it.
 - What is built and working?
 - What is half-built? **Uncommitted changes and the newest commits are the strongest
   signal of what `Now:` should say.**
@@ -58,7 +58,19 @@ From the evidence, answer:
 
 ### 3. Infer conventions from the code, not from a template
 
-Read a representative sample — three or four files across the layers — and record what
+Two conventions are **not** inferred, because they are house rules rather than
+observations about this repo. Carry the `## Writing conventions` block from the archetype
+template into the generated `CLAUDE.md` regardless of what the existing code does: no
+long dashes, no emoji, SVG icons from one set. If the repo currently violates them, note
+that under `## Existing notes` rather than silently adopting the violation as the
+convention.
+
+If the project has a UI, also carry the design language from
+`msr-init/references/design-language.md`, adapted to whatever palette and component
+library the repo already uses. Existing visual decisions still win; the house direction
+fills the gaps.
+
+Read a representative sample, three or four files across the layers, and record what
 the project **actually does**:
 
 - Naming, file layout, import style.
@@ -82,15 +94,15 @@ Record what actually happened:
 
 | Gate | Command | Actually ran? |
 |---|---|---|
-| typecheck | `npx tsc --noEmit` | ✅ 0 errors |
-| test | `npm test` | ❌ script not found |
+| typecheck | `npx tsc --noEmit` | PASS 0 errors |
+| test | `npm test` | FAIL script not found |
 
 A gate that does not run is recorded as `none`, not as configured.
 
 ### 5. Interview for what artifacts cannot tell you
 
 Git records what changed. It never records why, what is blocked, or what comes next.
-Ask — in one message, as a short list:
+Ask, in one message, as a short list:
 
 1. What are you working on right now?
 2. What is the next thing after that?
@@ -104,7 +116,7 @@ fresh session does, and the reasoning exists nowhere in the repo.
 
 ### 6. Write the files
 
-**`CLAUDE.md`** — start from the archetype template matching what the project actually
+**`CLAUDE.md`**: start from the archetype template matching what the project actually
 is, then overwrite its Conventions section with what you observed in step 3. Fill
 Commands from step 4's verified results.
 
@@ -113,7 +125,7 @@ Do not discard content you did not write.
 
 Mark anything you inferred but could not confirm with `<!-- inferred, unconfirmed -->`.
 
-**`docs/STATE.md`** — from the template. `Now:` comes from uncommitted work and the
+**`docs/STATE.md`**: from the template. `Now:` comes from uncommitted work and the
 newest commits. `Next:` and `Blocked:` come from the interview. Seed `Decisions` with
 the answer to question 4, and `Recent changes` with the last few meaningful commits.
 
@@ -131,7 +143,7 @@ expensive later.
 | Thought | Reality |
 |---|---|
 | "I'll read the whole codebase to understand it properly" | That spends the context this skill exists to save. Survey, sample, then ask. |
-| "The archetype template describes best practice, I'll use it as written" | The project already has practice. A CLAUDE.md that contradicts the code is worse than none — it makes future sessions fight the repo. |
+| "The archetype template describes best practice, I'll use it as written" | The project already has practice. A CLAUDE.md that contradicts the code is worse than none, it makes future sessions fight the repo. |
 | "The scripts in package.json are the gate commands" | Run them. Mid-flight projects have renamed and broken scripts constantly. |
 | "I can infer what they're working on from the commits" | You can infer the area. You cannot infer the goal, the blocker, or the deadline. Ask. |
 | "There's an existing CLAUDE.md but it's out of date" | Preserve it under Existing notes. It may hold the one convention that matters. |
@@ -158,7 +170,7 @@ expensive later.
    changes or named recent commits.
 5. Every inferred-but-unconfirmed item is marked, and all of them appeared in the
    playback.
-6. Run `node "${CLAUDE_PLUGIN_ROOT}/scripts/state-digest.mjs"` — it must print the
+6. Run `node "${CLAUDE_PLUGIN_ROOT}/scripts/state-digest.mjs"`, it must print the
    digest.
 7. The user has confirmed or corrected the summary. Do not report done before they
    respond.

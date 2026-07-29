@@ -2,9 +2,9 @@
 
 ## Requirements
 
-- Claude Code v2.1.154 or later — earlier versions ignore `defaultEnabled` and install
+- Claude Code v2.1.154 or later, earlier versions ignore `defaultEnabled` and install
   `msr-hack` and `msr-ai` enabled.
-- Node.js — required by Claude Code anyway, and used by the SessionStart hook.
+- Node.js, required by Claude Code anyway, and used by the SessionStart hook.
 - git.
 
 ## Install
@@ -81,9 +81,9 @@ remote:
 claude plugin marketplace add "./"
 ```
 
-The `./` is required — a bare `.` is rejected as an invalid source format.
+The `./` is required, a bare `.` is rejected as an invalid source format.
 
-Relative plugin sources resolve against the marketplace root — the directory containing
+Relative plugin sources resolve against the marketplace root, the directory containing
 `.claude-plugin/`. After editing, run `/reload-plugins`.
 
 Validate before pushing:
@@ -95,13 +95,11 @@ claude plugin validate ./plugins/msr-ai
 ```
 
 Do **not** pass `--strict`. It promotes the "No version specified" warning to an error,
-and omitting `version` is deliberate. That notice is the only warning you may ignore —
-fix any other one, since the reason to want `--strict`, catching a misspelled field name,
+and omitting `version` is deliberate. That notice is the only warning you may ignore. Fix any other one, since the reason to want `--strict`, catching a misspelled field name,
 still applies.
 
 **Validation alone is not enough.** It passes on manifests that fail at load. Two real
-failures in this repo — a duplicate hooks declaration and an unresolvable source path —
-both passed validation and only surfaced on install. Always finish with:
+failures in this repo, a duplicate hooks declaration and an unresolvable source path, both passed validation and only surfaced on install. Always finish with:
 
 ```bash
 claude plugin marketplace update msros
@@ -124,10 +122,10 @@ cross-marketplace dependencies unless the root marketplace allowlists the target
 
 If you still see this, your cached marketplace copy is stale. Run
 `/plugin marketplace update msros`. As a workaround you can install the dependency
-yourself first — `/plugin install superpowers@claude-plugins-official` — which satisfies
+yourself first, `/plugin install superpowers@claude-plugins-official`, which satisfies
 the constraint directly.
 
-### `failed to load` — Duplicate hooks file detected
+### `failed to load`: Duplicate hooks file detected
 
 ```
 Hook load failed: Duplicate hooks file detected: ./hooks/hooks.json resolves to
@@ -141,13 +139,13 @@ Remove the field.
 Only reference `hooks` in the manifest for *additional* hook files at non-standard
 paths.
 
-`claude plugin validate` does not catch this — it validates that the declared path
+`claude plugin validate` does not catch this, it validates that the declared path
 exists, which it does. Only `claude plugin list` after an install surfaces it.
 
 ### `Source path does not exist` on install
 
 The plugin `source` in `marketplace.json` did not resolve. A source beginning with `./`
-resolves against the marketplace root and **bypasses `metadata.pluginRoot`** — so
+resolves against the marketplace root and **bypasses `metadata.pluginRoot`**, so
 setting both `"pluginRoot": "./plugins"` and `"source": "./msr-core"` produces
 `<root>/msr-core`, which does not exist.
 
@@ -186,7 +184,7 @@ joined onto the cache directory and resolves nowhere. Delete the `path` key, the
 `claude plugin marketplace update msros`.
 
 Note that `~/.claude/plugins/known_marketplaces.json` keeps its own, correct copy of the
-entry — the two registries disagree, and only the `settings.json` one is consulted for
+entry, the two registries disagree, and only the `settings.json` one is consulted for
 the source. Fixing the wrong file changes nothing.
 
 To avoid this entirely, use a distinct name for the local development copy so it never
@@ -195,7 +193,7 @@ collides with the GitHub registration.
 ### Plugin installs but no skills appear
 
 Components must be at the **plugin root**, not inside `.claude-plugin/`. Only
-`plugin.json` belongs there. This failure is silent — the plugin loads and reports
+`plugin.json` belongs there. This failure is silent, the plugin loads and reports
 success with nothing in it.
 
 Check with `claude --debug` and look for the "loading plugin" lines listing each
@@ -203,7 +201,7 @@ component directory.
 
 ### `/msr-*` commands not offered
 
-1. `claude plugin list` — is the plugin enabled at this scope?
+1. `claude plugin list`, is the plugin enabled at this scope?
 2. `/reload-plugins`.
 3. Confirm each skill's frontmatter `name` matches its directory name.
 
@@ -228,7 +226,7 @@ correct, the markers are malformed.
 ### Hook does nothing at all on Windows
 
 Confirm the hook command invokes `node`, not a shell script. `.sh` hooks silently no-op
-on Windows — the plugin looks installed and does nothing.
+on Windows, the plugin looks installed and does nothing.
 
 ### `/msr-hack` skills loaded on a non-hackathon project
 

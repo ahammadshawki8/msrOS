@@ -43,17 +43,17 @@ session; every line added here is paid for forever. Detail goes below the marker
 
 ### 3. Append below the markers
 
-- **Decisions** — append `[Dn]` entries. Record the *reason*, not just the choice.
-  "Postgres over SQLite" is not useful. "Postgres over SQLite — Render's free tier
+- **Decisions**: append `[Dn]` entries. Record the *reason*, not just the choice.
+  "Postgres over SQLite" is not useful. "Postgres over SQLite, Render's free tier
   wipes the SQLite volume on redeploy" is.
-- **Open threads** — append `[Tn]` for anything discovered and deferred. Remove threads
+- **Open threads**: append `[Tn]` for anything discovered and deferred. Remove threads
   that were resolved this session.
-- **Recent changes** — append one dated `[Cn]` line. Keep the last ten; delete older.
+- **Recent changes**: append one dated `[Cn]` line. Keep the last ten; delete older.
 
 Record only what is **not derivable from the repo**. Git already stores what changed.
 `STATE.md` stores why, and what you decided not to do.
 
-### 4. Update CLAUDE.md if — and only if — a convention changed
+### 4. Update CLAUDE.md if: and only if, a convention changed
 
 A new dependency is not a convention. A new rule about how the codebase is written is.
 If a gate command changed, update it. Otherwise leave `CLAUDE.md` alone.
@@ -96,6 +96,6 @@ Show the new digest block, what was appended, and the proposed commit message.
 1. `docs/STATE.md` digest has today's date and a real `Now:` and `Next:`.
 2. The digest is four lines. Count them.
 3. Both markers are still present and correctly ordered.
-4. Run `node "${CLAUDE_PLUGIN_ROOT}/scripts/state-digest.mjs"` — it must print the new
+4. Run `node "${CLAUDE_PLUGIN_ROOT}/scripts/state-digest.mjs"`, it must print the new
    digest. If it prints nothing, the markers are broken.
 5. The proposed commit message contains no Claude attribution. Check it explicitly.

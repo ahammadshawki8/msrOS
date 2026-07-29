@@ -1,7 +1,7 @@
 # Stack defaults
 
 Conventions to pre-fill into `CLAUDE.md` per detected stack. These are defaults, not
-rules — if the repo already does something differently, the repo wins and the difference
+rules, if the repo already does something differently, the repo wins and the difference
 gets recorded in `CLAUDE.md` rather than corrected.
 
 ## House defaults
@@ -57,8 +57,7 @@ Record **every** match. Full-stack repos hit several, and a monorepo hits more.
 - DRF serializers separate from views; viewsets over function views.
 - `.env` for secrets via `django-environ` or `python-decouple`.
 - Migrations committed, always. Check `makemigrations --check` in the gate.
-- Deploy target: Render. Note that the free tier sleeps and has an ephemeral filesystem —
-  never persist uploads to local disk.
+- Deploy target: Render. Note that the free tier sleeps and has an ephemeral filesystem, never persist uploads to local disk.
 
 ## Flask
 
@@ -75,7 +74,7 @@ Preferred for AI services, because Pydantic models double as the typed contract.
 
 - Pydantic models for every request and response body.
 - `async def` only where something is actually awaited.
-- `/docs` is free — mention it in the README.
+- `/docs` is free, mention it in the README.
 - Long model calls belong in a background task, not the request path.
 
 ## React 18 + TypeScript + Vite
@@ -95,7 +94,7 @@ Preferred for AI services, because Pydantic models double as the typed contract.
 ## Flutter
 
 - `flutter analyze` covers typecheck and lint together.
-- State management follows whatever the repo already uses — do not introduce a second one.
+- State management follows whatever the repo already uses; do not introduce a second one.
 
 ## Datathon (Kaggle / Hugging Face)
 

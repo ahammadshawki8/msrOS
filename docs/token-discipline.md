@@ -21,9 +21,9 @@ is the reason msrOS is three plugins instead of one.
 ## 2. Keep the STATE.md digest small
 
 The SessionStart hook injects only the block between the `msr:digest` markers. Keep it
-to about six lines — project, archetype, now, next, blocked.
+to about six lines, project, archetype, now, next, blocked.
 
-Everything else — decisions, open threads, change history — goes **below** the markers,
+Everything else, decisions, open threads, change history, goes **below** the markers,
 where it loads only when a skill reads the file. This is index-then-fetch: a cheap
 always-loaded index, with detail retrieved on demand.
 
@@ -40,8 +40,8 @@ forward for a fraction of what the transcript costs.
 
 ## 4. Retrieve, don't dump
 
-- **`serena`** for finding code — semantic retrieval beats reading whole files.
-- **`context7`** for library documentation — beats pasting docs into the prompt, and is
+- **`serena`** for finding code, semantic retrieval beats reading whole files.
+- **`context7`** for library documentation, beats pasting docs into the prompt, and is
   current rather than whatever the model remembers.
 - **`Grep` with `head_limit`** over `Read` on a large file when you only need matches.
 
@@ -61,6 +61,6 @@ put in context.
 
 `CLAUDE.md` loads in full, every session, forever. It should hold decisions and
 conventions that are not derivable from the code. It should not hold anything the repo
-already says — file structure, dependency lists, or history that `git log` covers.
+already says, file structure, dependency lists, or history that `git log` covers.
 
 Audit it with `claude-md-management` when it starts to sprawl.

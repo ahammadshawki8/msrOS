@@ -17,10 +17,9 @@
 
 ## Decisions
 
-Choices that would otherwise get re-litigated. Record the reason, not just the choice —
-the code already shows what you picked, never what you rejected.
+Choices that would otherwise get re-litigated. Record the reason, not just the choice, the code already shows what you picked, never what you rejected.
 
-- [D1] <decision> — <why, including what was rejected>
+- [D1] <decision>, <why, including what was rejected>
 
 ## Open threads
 
@@ -32,4 +31,4 @@ Discovered and deliberately deferred. Delete entries when they are resolved.
 
 Keep the last ten. Delete older entries; `git log` is the permanent record.
 
-- [C1] <YYYY-MM-DD> — <what changed and its effect>
+- [C1] <YYYY-MM-DD>, <what changed and its effect>

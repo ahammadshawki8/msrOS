@@ -9,8 +9,8 @@ description: Use when starting a new project or adopting msrOS into an existing 
 
 One-time setup per project. Produces two files that every later session depends on:
 
-- **`CLAUDE.md`** — conventions, commands, and priorities, from an archetype template.
-- **`docs/STATE.md`** — the continuity artifact `/msr-session-start` and `/msr-handoff` read and write.
+- **`CLAUDE.md`**: conventions, commands, and priorities, from an archetype template.
+- **`docs/STATE.md`**: the continuity artifact `/msr-session-start` and `/msr-handoff` read and write.
 
 Without these, `/msr-session-start` has nothing to read and the SessionStart hook stays
 silent.
@@ -23,7 +23,7 @@ silent.
 **Do not use** when:
 
 - `docs/STATE.md` already exists → `/msr-session-start`.
-- **The project is already underway** — real commit history, working features, existing
+- **The project is already underway**: real commit history, working features, existing
   conventions → **`/msr-adopt`**. This skill imposes an archetype template, which is
   correct for greenfield and wrong for a repo that already has practice of its own.
 
@@ -40,7 +40,7 @@ content as a `## Existing notes` section rather than discarding it.
 
 ### 2. Detect the stack
 
-Look for these markers, in order. Record every match — projects are commonly more than
+Look for these markers, in order. Record every match, projects are commonly more than
 one.
 
 | Marker | Stack |
@@ -55,6 +55,14 @@ one.
 | `*.ipynb`, `environment.yml` | Notebook / research |
 
 Read `references/stack-defaults.md` for the conventions attached to each.
+
+If the project has a UI (`frontend`, `fullstack`, `hackathon`, or `startup`), also read
+`references/design-language.md` and carry its brief into the generated `CLAUDE.md`. It is
+the standing visual constraint to hand to `frontend-design`, not a replacement for it.
+
+Every generated `CLAUDE.md` carries the `## Writing conventions` block from its archetype
+template: no long dashes, no emoji, SVG icons from a single set. Do not drop it, and do
+not violate it in the file you are generating.
 
 If nothing matches, say the repo looks empty and ask what is being built. **Do not
 guess.**
@@ -71,7 +79,7 @@ deadline or Devpost, suggest `hackathon` as the default.
 ### 4. Resolve gate commands
 
 From the detected stack, determine the concrete typecheck / lint / build / test
-commands. Verify each exists — check `package.json` scripts, `Makefile` targets, or
+commands. Verify each exists, check `package.json` scripts, `Makefile` targets, or
 `pyproject.toml` sections. **Never write a command you have not confirmed exists.** If
 one is missing, record it as `none` rather than inventing it.
 
@@ -109,11 +117,11 @@ file paths. Tell the user to run `/msr-session-start` from the next session on.
 
 Before reporting done, confirm all of these and show the evidence:
 
-1. `CLAUDE.md` exists and contains the resolved gate commands — not template placeholders.
+1. `CLAUDE.md` exists and contains the resolved gate commands, not template placeholders.
 2. `docs/STATE.md` exists and contains both `<!-- msr:digest:start -->` and
    `<!-- msr:digest:end -->`.
 3. The digest block has a real `Now:` and `Next:` line, no `<...>` placeholders left.
 4. Run the hook the way Claude Code will:
-   `node "${CLAUDE_PLUGIN_ROOT}/scripts/state-digest.mjs"` — it must print the digest.
+   `node "${CLAUDE_PLUGIN_ROOT}/scripts/state-digest.mjs"`, it must print the digest.
 
 If step 4 prints nothing, the markers are wrong. Fix them before reporting success.

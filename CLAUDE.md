@@ -1,4 +1,4 @@
-# CLAUDE.md — msrOS
+# CLAUDE.md: msrOS
 
 Rules for working **on** this repository. This is a Claude Code plugin marketplace,
 not an application.
@@ -30,9 +30,36 @@ re-derived, half-remembered, or quietly contradicted by a new skill.
    source of ideas that are both.
 3. **Every narrative artifact opens with a hook and carries an emotional through-line.**
    Devpost writeups, video narration, README openings. Concrete and specific, opening and
-   closing on the same person. **Never invent a detail to strengthen a story** — a story
+   closing on the same person. **Never invent a detail to strengthen a story.** A story
    a judge doubts discredits the technical claims beside it. Details trace to `STATE.md`,
    a commit, or a citation.
+
+### Writing conventions
+
+Applies to every file in this repository and to everything its skills generate.
+
+- **No long dashes.** Never an em dash or an en dash, in prose, tables, headings, commit
+  messages, or generated output. Use a colon before a definition or a list, a semicolon
+  or a full stop between clauses, parentheses for a genuine aside, and the word "to" for
+  ranges. Markdown `---` horizontal rules are unaffected.
+- **No emoji.** Not in documentation, not in skill output, not as status markers in
+  tables. Write the word: `PASS`, `FAIL`, `SKIP`, `WARN`, `Done`. Emoji render
+  differently on every platform and read as unfinished.
+- **In UI, icons are SVG from a single set** (Lucide or Phosphor), never emoji and never
+  an icon font.
+
+Every archetype template carries a `## Writing conventions` block stating this, so it
+propagates into each project's own `CLAUDE.md`. Keep those blocks in sync with this one.
+
+### Design language
+
+`plugins/msr-core/skills/msr-init/references/design-language.md` holds the house visual
+direction: minimal and professional, and also kawaii, with real motion. Three or four
+colour families, generous radius, overshoot easing, SVG icons.
+
+`frontend-design` still owns visual direction (see the composition rule). That file is
+the standing constraint handed *to* it, not a replacement for it. Do not grow it into a
+design-system skill.
 
 ### Do not encode a one-off as a default
 
@@ -54,7 +81,7 @@ change would only make sense inside one specific app, it does not belong here.
 ## Composition rule
 
 These plugins are already installed and own their domains. Before adding any component,
-check whether one of them provides it. If it does, **delegate by name** — do not
+check whether one of them provides it. If it does, **delegate by name**; do not
 rebuild:
 
 | Plugin | Owns |
@@ -86,19 +113,19 @@ plugins/<name>/
 ```
 
 Components go at the **plugin root**. Putting them inside `.claude-plugin/` makes the
-plugin load with no components and no error message — a silent failure that is hard to
+plugin load with no components and no error message, a silent failure that is hard to
 diagnose later.
 
 ## Conventions
 
-1. **SKILL.md anatomy** — every skill follows: Overview → When to Use → Process →
+1. **SKILL.md anatomy**: every skill follows: Overview → When to Use → Process →
    Rationalizations table → Red Flags → Verification. This matches `superpowers` and
    `addyosmani/agent-skills`, so the plugins compose instead of clashing.
-2. **Evidence rule** — every skill terminates in observable evidence: command output, a
+2. **Evidence rule**: every skill terminates in observable evidence: command output, a
    file that exists, a check that passed. "Looks good" is never sufficient.
-3. **Node, not bash** — hook and helper scripts are `.mjs`. This repo is developed on
+3. **Node, not bash**: hook and helper scripts are `.mjs`. This repo is developed on
    Windows, where a `.sh` hook silently no-ops.
-4. **Naming** — skills are `msr-*` in kebab-case, and the frontmatter `name` must match
+4. **Naming**: skills are `msr-*` in kebab-case, and the frontmatter `name` must match
    the directory name. Agents are unprefixed; Claude Code namespaces them
    (`msr-hack:judge-simulator`).
 5. **No `version` field** in any `plugin.json` or marketplace entry. Versions resolve
@@ -113,7 +140,7 @@ diagnose later.
 8. **Do not declare `hooks` in `plugin.json`.** `hooks/hooks.json` is auto-discovered.
    Declaring it as well double-loads the file and the whole plugin fails with
    `Duplicate hooks file detected`. Only reference *additional* hook files there.
-   Note that `claude plugin validate` will happily demand the path exist — validation
+   Note that `claude plugin validate` will happily demand the path exist. Validation
    and runtime disagree on this, and only an install catches it.
 9. **Plugin `source` paths are full and explicit**: `./plugins/msr-core`. Do not use
    `metadata.pluginRoot`. A source beginning with `./` resolves against the marketplace
@@ -132,7 +159,7 @@ claude plugin validate ./plugins/msr-ai
 
 Do **not** use `--strict`. It promotes the "No version specified" warning to an error,
 and omitting `version` is intentional (convention 5). That version notice is the only
-warning you may ignore — fix any other one, because the reason to want `--strict`,
+warning you may ignore. Fix any other one, because the reason to want `--strict`,
 catching a misspelled field name, still applies.
 
 **Validation is not sufficient.** It passes on manifests that fail at load. Always do a

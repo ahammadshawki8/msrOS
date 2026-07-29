@@ -31,7 +31,7 @@ assertions on generated text are brittle; weak ones catch nothing.
 | exact match | classification, extraction, structured output |
 | contains / not-contains | a required fact present, a forbidden claim absent |
 | schema valid | any structured output |
-| citation present | grounded answers — every claim carries a source |
+| citation present | grounded answers, every claim carries a source |
 | refuses | cases where refusing is the correct behavior |
 | LLM judge | last resort, only when nothing above applies |
 
@@ -40,13 +40,13 @@ one everywhere means measuring one unreliable thing with another.
 
 ### 2. Build the golden set
 
-Aim for 30–50 cases before worrying about more. Composition matters more than count:
+Aim for 30 to 50 cases before worrying about more. Composition matters more than count:
 
-- **Typical** cases — the intended path.
-- **Edge** cases — empty input, very long input, ambiguous input, wrong language.
-- **Should-refuse** cases — missing evidence, out of scope, adversarial. These are
+- **Typical** cases, the intended path.
+- **Edge** cases, empty input, very long input, ambiguous input, wrong language.
+- **Should-refuse** cases, missing evidence, out of scope, adversarial. These are
   usually the most under-tested and the most important.
-- **Known regressions** — every bug you have ever fixed becomes a case. This is how the
+- **Known regressions**: every bug you have ever fixed becomes a case. This is how the
   set earns its keep over time.
 
 Store as `evals/cases.jsonl`, one case per line: `id`, `input`, `assertion`, `expected`,
@@ -106,7 +106,7 @@ typical cases and is dangerous.
 
 1. `evals/cases.jsonl` exists with at least 30 cases.
 2. The set includes typical, edge, and should-refuse tags. Show counts per tag.
-3. The runner completes on a set containing a known failure — it does not abort.
+3. The runner completes on a set containing a known failure, it does not abort.
 4. A timestamped result file exists in `evals/results/`, and the previous one is intact.
 5. The result file records model, prompt version, temperature, and seed.
 6. A baseline pass rate is stated numerically.

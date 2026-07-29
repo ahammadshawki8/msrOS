@@ -41,7 +41,7 @@ single field is the highest-leverage token decision in the repo.
 16 skills and 2 agents, against ecosystem repos shipping 281 skills and 67 agents.
 
 That is deliberate. Every added skill competes for selection with every existing one.
-Two skills that both plausibly match a task make Claude's choice worse, not better — and
+Two skills that both plausibly match a task make Claude's choice worse, not better, and
 the cost is paid on every turn, forever, in exchange for capability used occasionally.
 
 The governing rule is in `CLAUDE.md`: **before adding a component, check whether an
@@ -79,12 +79,11 @@ diagnose, because everything reports success.
 
 Each skill's frontmatter `name` must match its directory name.
 
-`hooks/hooks.json` is **auto-discovered**. Do not also declare it in `plugin.json` — the
+`hooks/hooks.json` is **auto-discovered**. Do not also declare it in `plugin.json`, the
 file loads twice and the whole plugin fails with `Duplicate hooks file detected`. The
 manifest's `hooks` field is only for *additional* hook files at non-standard paths.
 
-Plugin `source` paths in `marketplace.json` are full and explicit —
-`./plugins/msr-core`. `metadata.pluginRoot` is deliberately unused: a source beginning
+Plugin `source` paths in `marketplace.json` are full and explicit, `./plugins/msr-core`. `metadata.pluginRoot` is deliberately unused: a source beginning
 with `./` resolves against the marketplace root and bypasses `pluginRoot`, so setting
 both silently yields a path that does not exist.
 
@@ -110,14 +109,14 @@ review.
 
 ## Versioning
 
-**No `version` field anywhere** — not in any `plugin.json`, not in any marketplace entry.
+**No `version` field anywhere**: not in any `plugin.json`, not in any marketplace entry.
 
 Claude Code resolves a plugin's version from the first of: `plugin.json`, the marketplace
 entry, then the **git commit SHA**. With the field omitted, every push to `main` is a new
 version and `/plugin update` picks it up.
 
 If you set an explicit version, you must bump it on every change or users silently keep
-the cached copy — a failure that looks exactly like "my edit didn't apply."
+the cached copy, a failure that looks exactly like "my edit didn't apply."
 
 The cost: `claude plugin validate --strict` fails, because it promotes the missing-version
 warning to an error. So the gate is plain `claude plugin validate`, and that version
@@ -154,20 +153,20 @@ is invisible until `/msr-session-start` or `/msr-handoff` reads it.
 Result: roughly six lines per session start instead of the whole file, with the same
 continuity. One hook, no daemon, no database.
 
-`/msr-handoff` caps the digest at four lines for exactly this reason — the hook pays for
+`/msr-handoff` caps the digest at four lines for exactly this reason, the hook pays for
 those lines on every future session in that project, permanently.
 
 ## The hook contract
 
 `scripts/state-digest.mjs` must **never fail loudly**. Missing file, absent markers,
-malformed markers, empty digest — all produce silence and exit 0.
+malformed markers, empty digest, all produce silence and exit 0.
 
 A SessionStart hook that throws breaks every session in every project the plugin is
 installed into. Silence is always the correct failure mode. The script wraps `main()` in
 a bare `catch {}` and unconditionally exits 0.
 
 Hook scripts are **Node (`.mjs`), never bash**. This is developed on Windows, where a
-`.sh` hook silently no-ops — the plugin appears installed and simply does nothing.
+`.sh` hook silently no-ops, the plugin appears installed and simply does nothing.
 
 ## Skill anatomy
 
@@ -180,10 +179,10 @@ the same shape independently. Matching it means the plugins compose rather than 
 
 Two sections carry the weight:
 
-- **Rationalizations** — a table of the specific excuses an agent makes to skip a step,
+- **Rationalizations**: a table of the specific excuses an agent makes to skip a step,
   each with a rebuttal. It works because it intercepts a named failure mode instead of
   exhorting generally.
-- **Verification** — every skill terminates in observable evidence: command output, a
+- **Verification**: every skill terminates in observable evidence: command output, a
   file that exists, a check that passed. "Looks good" is never sufficient.
 
 That second rule is what makes the rest trustworthy. A gate that reports success without
@@ -203,5 +202,5 @@ interchangeable:
 | State | from the user's stated goal | reconstructed from git + a six-question interview |
 
 Running `msr-init` on a mature repo would write a confident `CLAUDE.md` full of
-conventions the project does not follow — which then misleads every future session. That
+conventions the project does not follow, which then misleads every future session. That
 is why they are separate skills rather than one with a flag.

@@ -1,4 +1,4 @@
-# CLAUDE.md — <project>
+# CLAUDE.md: <project>
 
 Research project. Claim under investigation: **<claim>**.
 
@@ -8,7 +8,7 @@ Research project. Claim under investigation: **<claim>**.
 
 ## Stack
 
-<detected stack — typically Python, notebooks, PyTorch/scikit-learn, pandas>
+<detected stack, typically Python, notebooks, PyTorch/scikit-learn, pandas>
 
 ## Commands
 
@@ -31,7 +31,7 @@ In priority order:
 1. Every run is logged with parameters, seed, data version, and environment.
 2. The claim is stated precisely enough to be false.
 3. Baselines are real, and run under the same conditions as the method.
-4. Code quality — last, and genuinely last.
+4. Code quality, last, and genuinely last.
 
 Acceptable: rough interfaces, no deployment story, notebooks over modules, duplicated
 plotting code.
@@ -42,7 +42,7 @@ tuned less carefully than the method, silent data leakage between train and test
 ## Conventions
 
 - One experiment, one logged run. Use `/msr-bench` if `msr-ai` is enabled.
-- Seeds set explicitly and recorded — never left to default.
+- Seeds set explicitly and recorded, never left to default.
 - Data versioned or checksummed. A changed dataset invalidates every prior number.
 - Notebooks are for exploration. Anything reused moves into a module and gets imported.
 - Figures regenerate from code. No hand-edited images.
@@ -53,10 +53,21 @@ Usually none. If a demo is needed, HF Spaces.
 
 ## Testing
 
-Test the data pipeline and the metric implementations — that is where silent
+Test the data pipeline and the metric implementations. That is where silent
 correctness bugs live and where a bug invalidates every result rather than crashing.
 
 Model quality is measured by evaluation, not asserted by unit tests.
+
+## Writing conventions
+
+Applies to every file, comment, commit message, UI string, and generated document here.
+
+- **No long dashes.** Never an em dash or an en dash. Use a colon before a definition or
+  a list, a semicolon or a full stop between clauses, parentheses for a genuine aside,
+  and the word "to" for ranges.
+- **No emoji.** Not in the UI, not in documentation, not in commit messages, not as
+  status markers in tables. Write the word instead: `PASS`, `FAIL`, `TODO`, `Done`.
+  Emoji render differently on every platform and read as unfinished.
 
 ## Known issues
 

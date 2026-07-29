@@ -37,9 +37,9 @@ Worth generalizing only after the Devpost path is proven.
 
 ## Under consideration
 
-- **A `msr-cost` skill** — report token and dollar spend for a session against the
+- **A `msr-cost` skill**: report token and dollar spend for a session against the
   budget in `CLAUDE.md`. Useful, but only if the data is reliably available.
-- **Archetype for browser extensions** — the Chrome extension plus Forge UI shape from
+- **Archetype for browser extensions**: the Chrome extension plus Forge UI shape from
   DoNotMiss is a recurring pattern that none of the seven archetypes fits well.
 - **A second hook on `Stop`** to nudge `/msr-handoff` when files changed and the digest
   is stale. Deferred because a nagging hook is worse than a forgotten handoff, and the

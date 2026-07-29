@@ -20,7 +20,7 @@ repo, a dead demo URL, or a form field left blank.
 
 **Refuse to run** if `docs/HACKATHON.md` is missing. Without the extracted deliverables
 there is nothing to check against, and a checklist invented at this moment is worse than
-no checklist — it manufactures confidence at the exact moment it is most costly.
+no checklist, it manufactures confidence at the exact moment it is most costly.
 
 ## Process
 
@@ -46,12 +46,12 @@ Specifically:
 | Video uploaded | Open the link. Confirm it plays and is within the length cap. |
 | Devpost fields | Every required field filled, within character limits. |
 | Sponsor tech | `grep` the codebase for the actual import. |
-| Team members | All added on Devpost — a missing teammate can void a prize. |
+| Team members | All added on Devpost, a missing teammate can void a prize. |
 | License | Present if required. |
 
 ### 3. Cross-check the rubric
 
-Every criterion in `HACKATHON.md` should have something visible pointing at it — in the
+Every criterion in `HACKATHON.md` should have something visible pointing at it, in the
 video, the writeup, or the repo. Report any criterion with nothing.
 
 ### 4. Check the clock
@@ -63,12 +63,12 @@ time. If under an hour, say so first, before anything else.
 
 | Deliverable | Constraint | Result | Evidence |
 |---|---|---|---|
-| Repo public | — | ✅ | loads in incognito |
-| Demo URL | live | ❌ | 502 from Render |
-| Video | ≤ 3:00 | ✅ | 2:47, plays |
+| Repo public |, | PASS | loads in incognito |
+| Demo URL | live | FAIL | 502 from Render |
+| Video | ≤ 3:00 | PASS | 2:47, plays |
 
-Verdict is arithmetic: **any ❌ means do not submit yet.** Then state what to fix, in
-time order — soonest-expiring first.
+Verdict is arithmetic: **any FAIL means do not submit yet.** Then state what to fix, in
+time order, soonest-expiring first.
 
 ## Rationalizations
 
@@ -84,18 +84,18 @@ time order — soonest-expiring first.
 ## Red Flags
 
 - Running without `docs/HACKATHON.md`.
-- Marking repo visibility ✅ without an incognito load.
-- Marking the demo ✅ from a stale tab.
-- Reporting ready with any ❌.
+- Marking repo visibility PASS without an incognito load.
+- Marking the demo PASS from a stale tab.
+- Reporting ready with any FAIL.
 - No time-remaining figure in the report.
-- A sponsor technology marked ✅ without grepping for it.
+- A sponsor technology marked PASS without grepping for it.
 
 ## Verification
 
 1. `docs/HACKATHON.md` was read, and every deliverable in it appears as a row.
-2. Every row has concrete evidence — a status code, a duration, a grep hit, an
+2. Every row has concrete evidence, a status code, a duration, a grep hit, an
    incognito load.
 3. The repo URL was loaded in a logged-out context.
 4. The demo URL returned 200 **and** rendered.
 5. Time remaining is stated in both timezones.
-6. The verdict matches the rows: any ❌ means not ready.
+6. The verdict matches the rows: any FAIL means not ready.

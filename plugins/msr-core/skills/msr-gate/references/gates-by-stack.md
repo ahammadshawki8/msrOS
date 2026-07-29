@@ -4,8 +4,7 @@ Fallback detection for when `CLAUDE.md` records no gate commands. `CLAUDE.md` is
 authoritative; this file is only for the first run or an un-initialized repo.
 
 **Verify a command exists before running it.** Check `package.json` scripts,
-`Makefile` targets, or `pyproject.toml` sections. If it does not exist, record `none` —
-never substitute a similar-looking command.
+`Makefile` targets, or `pyproject.toml` sections. If it does not exist, record `none`, never substitute a similar-looking command.
 
 ## Node / TypeScript
 
@@ -22,7 +21,7 @@ Use the lockfile to pick the runner: `pnpm-lock.yaml` → `pnpm`, `yarn.lock` �
 ### Next.js
 
 `npm run build` runs type checking and linting as part of the build. It is the slowest
-but most complete gate. Still run `tsc --noEmit` first — it fails faster and with
+but most complete gate. Still run `tsc --noEmit` first, it fails faster and with
 clearer errors.
 
 ### Vite + React
@@ -43,7 +42,7 @@ bare or `python -m`.
 | build | `python -m build` | packaging configured; usually `none` for an app |
 | test | `pytest -q` | `pytest` in dependencies or a `tests/` directory exists |
 
-For most application repos, `build` is legitimately `none`. Record it as `⬜`.
+For most application repos, `build` is legitimately `none`. Record it as `SKIP`.
 
 ### Django
 
@@ -61,7 +60,7 @@ the most common way a Django project passes locally and fails on deploy.
 No framework-level check command. Use `ruff check .` and `pytest -q`.
 
 For FastAPI, importing the app is itself a useful smoke gate:
-`python -c "from app.main import app"` — adjust the path to the project's layout, and
+`python -c "from app.main import app"`, adjust the path to the project's layout, and
 only after confirming that module exists.
 
 ## Flutter
@@ -81,7 +80,7 @@ Usually no gates. Do not invent them.
 
 If `nbconvert` is available, `jupyter nbconvert --execute --to notebook --inplace` on
 key notebooks verifies they still run end to end. Only suggest this if the user wants
-it — it is slow and can be destructive to outputs.
+it, it is slow and can be destructive to outputs.
 
 ## Monorepo / multiple stacks
 
@@ -89,7 +88,7 @@ Run each stack's gates and label rows by workspace:
 
 | Gate | Command | Result |
 |---|---|---|
-| typecheck (web) | `npm --prefix web run typecheck` | ✅ |
-| test (api) | `pytest api -q` | ❌ |
+| typecheck (web) | `npm --prefix web run typecheck` | PASS |
+| test (api) | `pytest api -q` | FAIL |
 
 Do not merge results across workspaces. A failure in one is a failure overall.

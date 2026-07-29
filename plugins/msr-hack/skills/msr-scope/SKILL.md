@@ -7,7 +7,7 @@ description: Use after ingesting hackathon rules and whenever time pressure chan
 
 ## Overview
 
-Decides what gets built, and — more importantly — writes down what does not.
+Decides what gets built, and, more importantly, writes down what does not.
 
 Scope is not cut once. It is cut at the start, again at the midpoint, and again when
 something takes three times longer than estimated. Each cut produces a record, so the
@@ -31,14 +31,14 @@ rubric.
 
 Read the deadline from `docs/HACKATHON.md`. Compute hours remaining.
 
-Subtract the **submission tail** — the time after code freeze that the deliverables
+Subtract the **submission tail**, the time after code freeze that the deliverables
 need. Default to 3 hours, more if the video cap is long or the Devpost form is heavy:
 
 - recording and editing the demo video
 - writing and submitting the Devpost form
 - final deploy and verification
 
-Working hours = hours remaining − submission tail. State this number plainly. It is
+Working hours = hours remaining - submission tail. State this number plainly. It is
 always smaller than people think, and it is the number the rest of the process uses.
 
 ### 2. Score each candidate feature
@@ -96,10 +96,10 @@ These come out of the budget first, not last.
 
 ### 5. Write the record
 
-`docs/SCOPE.md` — what is being built, in order, with the criteria each serves and the
+`docs/SCOPE.md`, what is being built, in order, with the criteria each serves and the
 budgeted hours.
 
-`.out-of-scope/README.md` — everything cut, each with one line on why. Cut items keep
+`.out-of-scope/README.md`, everything cut, each with one line on why. Cut items keep
 their score, so a later recut can promote one without re-deriving it.
 
 Writing the cut down is the entire point. An idea that only exists in your head comes

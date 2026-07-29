@@ -1,4 +1,4 @@
-# CLAUDE.md — <project>
+# CLAUDE.md: <project>
 
 AI / agent system.
 
@@ -8,7 +8,7 @@ AI / agent system.
 
 ## Stack
 
-<detected stack — typically Python, FastAPI, MCP, a vector store, one or more LLM providers>
+<detected stack, typically Python, FastAPI, MCP, a vector store, one or more LLM providers>
 
 **Providers:** primary `<provider>`, fallback `<provider>`.
 
@@ -24,7 +24,7 @@ AI / agent system.
 
 ## Priorities
 
-**Optimize for: grounding, evaluability, and cost control — in that order.**
+**Optimize for: grounding, evaluability, and cost control, in that order.**
 
 An impressive answer that cannot be traced to a source is a liability, not a feature.
 This is the whole reason the system exists.
@@ -32,7 +32,7 @@ This is the whole reason the system exists.
 In priority order:
 
 1. Every claim traces to a retrieved source. Refusing is better than inventing.
-2. Behavior is measurable — an eval set exists and runs.
+2. Behavior is measurable, an eval set exists and runs.
 3. Cost and latency are bounded and observed.
 4. Answer fluency.
 
@@ -71,11 +71,22 @@ Unit tests do not measure model quality. Evaluation does.
 
 - `/msr-eval` for a golden set with per-case assertions.
 - `/msr-ground` to audit whether claims trace to sources.
-- `eval-adversary` before shipping — prompt injection, edge cases, refusal probing.
+- `eval-adversary` before shipping, prompt injection, edge cases, refusal probing.
 - `/msr-bench` to log every run with its parameters.
 
-Deterministic parts — parsers, chunkers, retrievers, citation extraction — get ordinary
+Deterministic parts, parsers, chunkers, retrievers, citation extraction, get ordinary
 unit tests, and they should be thorough. That is where silent correctness bugs live.
+
+## Writing conventions
+
+Applies to every file, comment, commit message, UI string, and generated document here.
+
+- **No long dashes.** Never an em dash or an en dash. Use a colon before a definition or
+  a list, a semicolon or a full stop between clauses, parentheses for a genuine aside,
+  and the word "to" for ranges.
+- **No emoji.** Not in the UI, not in documentation, not in commit messages, not as
+  status markers in tables. Write the word instead: `PASS`, `FAIL`, `TODO`, `Done`.
+  Emoji render differently on every platform and read as unfinished.
 
 ## Known issues
 

@@ -53,7 +53,7 @@ Non-negotiable fields: `git_sha`, `dirty`, `seed`, `dataset.sha256`, `model`, an
 `prompt_version`.
 
 **`dirty: true` means the run is not reproducible.** Record it honestly rather than
-omitting it — a dirty run is still useful, but only if labeled.
+omitting it, a dirty run is still useful, but only if labeled.
 
 ### 3. Append, never overwrite
 
@@ -96,7 +96,7 @@ The `run_id`, the result, and the diff against whichever run you are comparing t
 1. `bench/runs.jsonl` exists and every line parses as JSON. Validate it.
 2. The new record has `git_sha`, `dirty`, `seed`, `dataset.sha256`, `model`, and
    `prompt_version`.
-3. The file grew by exactly one line — nothing was overwritten. Check the line count
+3. The file grew by exactly one line, nothing was overwritten. Check the line count
    before and after.
 4. `dirty` matches actual `git status`. Verify, do not assume.
 5. If a comparison is reported, the parameter diff is shown and the number of changed

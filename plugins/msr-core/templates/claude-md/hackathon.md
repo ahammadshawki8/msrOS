@@ -1,4 +1,4 @@
-# CLAUDE.md — <project>
+# CLAUDE.md: <project>
 
 Hackathon build. Deadline: **<deadline>**. Event: **<event>**.
 
@@ -30,7 +30,7 @@ or fourth. What separates first is one thing the judges have not seen before, gr
 well enough to survive the follow-up question, and made visible in the video.
 
 **Differentiator:** <the one out-of-the-box thing this project has that the other forty
-do not — copy from `docs/SCOPE.md`>
+do not, copy from `docs/SCOPE.md`>
 
 Deliberate shortcuts *outside the demo path* are correct engineering here, not
 technical debt. Do not spend deadline time making non-demo code production-grade.
@@ -73,7 +73,7 @@ secret, a broken deploy URL, a missing required deliverable.
 Frontend: Vercel. Backend: Render.
 
 Deploy early and keep it green. A deploy that first runs at hour 40 is a deploy that
-fails at hour 40. Render's free tier sleeps and has an ephemeral filesystem — never
+fails at hour 40. Render's free tier sleeps and has an ephemeral filesystem, never
 persist uploads to local disk.
 
 ## Testing
@@ -83,6 +83,20 @@ Test the demo path. That is the bar.
 A single end-to-end test that walks the exact demo flow is worth more than eighty unit
 tests here, because the failure it prevents is the only failure that costs you the
 event.
+
+## Writing conventions
+
+Applies to every file, comment, commit message, UI string, and generated document here.
+
+- **No long dashes.** Never an em dash or an en dash. Use a colon before a definition or
+  a list, a semicolon or a full stop between clauses, parentheses for a genuine aside,
+  and the word "to" for ranges.
+- **No emoji.** Not in the UI, not in documentation, not in commit messages, not as
+  status markers in tables. Write the word instead: `PASS`, `FAIL`, `TODO`, `Done`.
+  Emoji render differently on every platform and read as unfinished.
+- **Icons are SVG from a single set**, never emoji and never an icon font.
+  Lucide or Phosphor. Inline SVG components so they inherit `currentColor`, scale
+  cleanly, and can be animated.
 
 ## Known issues
 
@@ -94,11 +108,11 @@ event.
 - `docs/HACKATHON.md` is authoritative on criteria and deliverables. When it conflicts
   with anything here, it wins.
 - Check remaining time before proposing scope. `/msr-scope` if it needs recutting.
-- Run `judge-simulator` when the build is demoable — not at the end. It exists to
+- Run `judge-simulator` when the build is demoable, not at the end. It exists to
   redirect effort while there is still time to act on it.
 - Do not refactor for elegance. Do not add abstraction for a second use case that will
   not exist. Ship.
-- Every narrative artifact — Devpost writeup, video narration, README opening — starts
+- Every narrative artifact, Devpost writeup, video narration, README opening, starts
   with a concrete hook and carries one honest emotional through-line, opening and closing
   on the same specific person. Never invent a detail to strengthen it; a story a judge
   doubts discredits the technical claims next to it.

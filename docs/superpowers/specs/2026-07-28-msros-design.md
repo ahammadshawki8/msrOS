@@ -1,4 +1,4 @@
-# msrOS — Design
+# msrOS: Design
 
 **Date:** 2026-07-28
 **Author:** Ahammad Shawki
@@ -28,7 +28,7 @@ enable/disable, and path resolution via `${CLAUDE_PLUGIN_ROOT}`.
 
 - Start any project without re-explaining stack, conventions, or priorities.
 - Resume any project after days away, in one command, without reading the whole repo.
-- Run a hackathon end to end — rules ingestion through Devpost submission — on rails.
+- Run a hackathon end to end, rules ingestion through Devpost submission, on rails.
 - Encode the "grounded / verifiable AI" practice that distinguishes the author's work.
 - Stay small enough to audit. Restraint is a feature, not a limitation.
 
@@ -45,7 +45,7 @@ enable/disable, and path resolution via `${CLAUDE_PLUGIN_ROOT}`.
 These plugins are already installed and enabled on the author's machine. msrOS
 **must not** rebuild what they provide; it delegates by name.
 
-| Installed plugin | Already provides — do not rebuild |
+| Installed plugin | Already provides, do not rebuild |
 |---|---|
 | `superpowers` | brainstorming, writing-plans, executing-plans, TDD, systematic-debugging, verification-before-completion, requesting/receiving-code-review, git-worktrees, subagent-driven-development, dispatching-parallel-agents, finishing-a-development-branch |
 | `feature-dev` | `code-architect`, `code-explorer`, `code-reviewer` agents |
@@ -66,7 +66,7 @@ Code enables them automatically at install.
 
 | Repo | Taken | Rejected |
 |---|---|---|
-| `addyosmani/agent-skills` (MIT) | **SKILL.md anatomy**: Overview → When to Use → Process → Rationalizations table → Red Flags → Verification. Adopted verbatim as the house style, because `superpowers` converged on the same shape — matching it makes the plugins compose instead of clash. | Its 24 general engineering skills — overlap with `superpowers`. |
+| `addyosmani/agent-skills` (MIT) | **SKILL.md anatomy**: Overview → When to Use → Process → Rationalizations table → Red Flags → Verification. Adopted verbatim as the house style, because `superpowers` converged on the same shape, matching it makes the plugins compose instead of clash. | Its 24 general engineering skills, overlap with `superpowers`. |
 | `thedotmack/claude-mem` | **Index-then-fetch**: a cheap always-loaded digest, with detail fetched only on demand. Applied to `STATE.md`. | SQLite + FTS5 + Chroma + a Bun worker daemon + 5 lifecycle hooks. Far too much machinery for a Markdown file. msrOS uses **one** hook and no daemon. |
 | `gsd-build/get-shit-done` (archived 2026-06-26) | The explicit **`.out-of-scope/`** parking lot for consciously-rejected work. Adopted in `/msr-scope`. | Everything else; the project is archived. |
 | `affaan-m/ECC` (MIT) | Its **layer separation** (skills / agents / hooks / rules) and research-first gate ordering. | Its 67 agents + 281 skills + 94 command shims. Vendoring it would directly contradict the token-efficiency goal and collide with `superpowers`. If wanted, install ECC alongside as its own plugin. |
@@ -127,7 +127,7 @@ msrOS/
 marketplace root and bypasses `pluginRoot`; setting both yields a path that does not
 exist and the install fails with `Source path does not exist`. Full explicit paths only.
 
-`allowCrossMarketplaceDependenciesOn` is required, not optional — without it the
+`allowCrossMarketplaceDependenciesOn` is required, not optional, without it the
 dependencies on `superpowers` and `feature-dev` are blocked at install.
 
 The marketplace name `msros` is not on Anthropic's reserved list.
@@ -162,7 +162,7 @@ problems: `msr-init` imposes an archetype template, which is right for an empty 
 wrong for one that already has practice of its own. `msr-adopt` derives from evidence
 and asks, rather than prescribing.
 
-### 7.1 `docs/STATE.md` — the continuity artifact
+### 7.1 `docs/STATE.md`: the continuity artifact
 
 Every project managed by msrOS gets one `docs/STATE.md`. It is the single source of
 resumption truth, structured for index-then-fetch:
@@ -178,13 +178,13 @@ resumption truth, structured for index-then-fetch:
 <!-- msr:digest:end -->
 
 ## Decisions
-- [D1] ERNIE primary, Groq Llama 3.3 70B fallback — ERNIE rate-limits at 60 rpm.
+- [D1] ERNIE primary, Groq Llama 3.3 70B fallback, ERNIE rate-limits at 60 rpm.
 
 ## Open threads
 - [T1] gTTS latency >4s for Bengali; consider caching.
 
 ## Recent changes
-- [C1] 2026-07-28 — Added /api/v1/explain, Render deploy green.
+- [C1] 2026-07-28, Added /api/v1/explain, Render deploy green.
 ```
 
 The SessionStart hook injects **only the digest block** (~6 lines). Sections below it
@@ -202,7 +202,7 @@ claude-mem principle without claude-mem's machinery.
 | `msr-gate` | Stack-aware quality gates. Detects Django / Flask / FastAPI / Next / Vite-React / Flutter and runs that stack's typecheck, lint, build, test. | Each gate's actual command output, pass or fail. Never "looks good." |
 | `msr-ship` | Full pre-release check: gates + README accurate + CHANGELOG updated + no secrets + git clean. | Per-item pass/fail table with evidence. |
 
-`msr-session-start` deliberately stops after proposing one task. Steps 4–5 of the session
+`msr-session-start` deliberately stops after proposing one task. Steps 4 to 5 of the session
 lifecycle are delegated to `superpowers:writing-plans` / `executing-plans`.
 
 ### 7.3 Hook
@@ -223,7 +223,7 @@ One hook only.
 ```
 
 `state-digest.mjs` prints the content between the `msr:digest` markers of
-`docs/STATE.md`, or nothing at all. **Hook scripts are Node (`.mjs`), not bash** — the
+`docs/STATE.md`, or nothing at all. **Hook scripts are Node (`.mjs`), not bash**, the
 author develops on Windows, where a `.sh` hook silently no-ops. Node is guaranteed
 present because Claude Code requires it.
 
@@ -252,7 +252,7 @@ Stack defaults baked in, from the author's actual repositories:
 | `/msr-hack-init` | Scrape the hackathon rules/prizes/judging pages via `firecrawl`. Extract deadline, **judging criteria with weights**, prize tracks, required deliverables (video cap, repo visibility, required Devpost fields), sponsor-tech requirements. Write `docs/HACKATHON.md`. | `docs/HACKATHON.md` exists with a non-empty weighted criteria table. |
 | `/msr-scope` | Given hours remaining × criteria weights, produce a build list and an explicit `.out-of-scope/` parking lot. | `docs/SCOPE.md` + `.out-of-scope/README.md` written. |
 | `/msr-demo` | Storyboard, narration script timed to the video cap, screenshots/recordings via `playwright` + `chrome-devtools`, subtitle file. | Screenshot files exist on disk; narration word count fits the cap. |
-| `/msr-devpost` | Generate Devpost fields — Inspiration, What it does, How we built it, Challenges, Accomplishments, What we learned, What's next, Built with. **Sourced from `HACKATHON.md` + `STATE.md` + `git log`**, not recall. | `docs/DEVPOST.md`; every "Built with" entry traceable to a real dependency. |
+| `/msr-devpost` | Generate Devpost fields, Inspiration, What it does, How we built it, Challenges, Accomplishments, What we learned, What's next, Built with. **Sourced from `HACKATHON.md` + `STATE.md` + `git log`**, not recall. | `docs/DEVPOST.md`; every "Built with" entry traceable to a real dependency. |
 | `/msr-submit` | Final gate against `HACKATHON.md` deliverables: repo public, demo URL responds, video uploaded, every criterion addressed. | Per-deliverable pass/fail table. |
 | `judge-simulator` *(agent)* | Score the project against the weighted criteria **in `HACKATHON.md`**, adversarially. Return per-criterion score and the single highest-leverage fix. | Weighted total + one named fix. Refuses to run if `HACKATHON.md` is missing. |
 
@@ -267,23 +267,23 @@ downstream reads its output. Most hackathon losses are criteria misses, not code
 |---|---|---|
 | `/msr-mcp-new` | Scaffold an MCP server (Python or TS) on the DeepSIFT pattern: tool output parsed into **typed structured JSON before the model sees it**. | Server starts; `tools/list` returns the declared typed tools. |
 | `/msr-eval` | Build an eval harness: golden set, per-case assertions, run + report. | Harness runs; pass/fail counts printed. |
-| `/msr-ground` | Grounding audit — every claim traced to a retrieved source; citation check; confidence scoring. | Per-claim grounded/ungrounded table. |
+| `/msr-ground` | Grounding audit, every claim traced to a retrieved source; citation check; confidence scoring. | Per-claim grounded/ungrounded table. |
 | `/msr-bench` | Reproducible experiment logging: run id, params, results, environment. | Append-only `bench/runs.jsonl` entry. |
 | `/msr-paper` | Paper → implementable core → prototype plan. | Plan naming the specific reproducible contribution. |
 | `eval-adversary` *(agent)* | Attack the AI feature: prompt injection, edge cases, refusal probing, hallucination bait. | Ranked list of reproducible failures with inputs. |
 
 ## 10. House conventions
 
-1. **SKILL.md anatomy** — every skill: Overview → When to Use → Process → Rationalizations
+1. **SKILL.md anatomy**: every skill: Overview → When to Use → Process → Rationalizations
    table → Red Flags → Verification.
-2. **Evidence rule** — every skill terminates in observable evidence: command output, a
+2. **Evidence rule**: every skill terminates in observable evidence: command output, a
    file that exists, a check that passed. "Looks good" is never sufficient.
-3. **Delegate, don't duplicate** — before adding any component, check whether an
+3. **Delegate, don't duplicate**: before adding any component, check whether an
    installed plugin provides it. If so, name it and delegate.
-4. **Naming** — skills `msr-*` (kebab-case). Agents unprefixed; Claude Code namespaces
+4. **Naming**: skills `msr-*` (kebab-case). Agents unprefixed; Claude Code namespaces
    them as `msr-hack:judge-simulator`.
-5. **Node for scripts** — `.mjs`, never `.sh`.
-6. **No project code in this repo** — workflows only.
+5. **Node for scripts**: `.mjs`, never `.sh`.
+6. **No project code in this repo**: workflows only.
 7. **No Claude attribution.** Commit messages, PR bodies, CHANGELOG entries, and
    contributor lists must never name Claude as author, co-author, contributor, or
    collaborator. No `Co-Authored-By` trailer, no "Generated with" footer. This overrides
@@ -308,8 +308,8 @@ downstream reads its output. Most hackathon losses are criteria misses, not code
   **Not `--strict`.** `--strict` promotes the "No version specified" warning to an
   error, and omitting `version` is deliberate (§6). The one acceptable warning is that
   version notice; any other warning must be fixed rather than tolerated, since the
-  reason to want `--strict` — catching a misspelled field name — still applies.
-- **A real install must succeed.** Validation is necessary but not sufficient — it
+  reason to want `--strict`, catching a misspelled field name, still applies.
+- **A real install must succeed.** Validation is necessary but not sufficient, it
   passes on manifests that fail at load. Two defects in this repo, a duplicate hooks
   declaration and an unresolvable source path, both passed validation and surfaced only
   on install:
@@ -334,8 +334,8 @@ downstream reads its output. Most hackathon losses are criteria misses, not code
 | 1 | Repo skeleton, `marketplace.json`, three `plugin.json`, README, LICENSE, CHANGELOG, root CLAUDE.md | `claude plugin validate --strict` passes on all three |
 | 2 | `msr-core` skills + `state-digest.mjs` + hook + STATE.md template | Smoke test in §12 round-trips |
 | 3 | Seven CLAUDE.md archetypes + stack-defaults reference | `/msr-init` produces a correct CLAUDE.md for a React+Django repo |
-| 4 | `msr-hack` — 5 skills + `judge-simulator` | `/msr-hack-init` extracts a weighted rubric from a real Devpost rules page |
-| 5 | `msr-ai` — 5 skills + `eval-adversary` | `/msr-mcp-new` scaffolds a server whose `tools/list` responds |
+| 4 | `msr-hack`, 5 skills + `judge-simulator` | `/msr-hack-init` extracts a weighted rubric from a real Devpost rules page |
+| 5 | `msr-ai`, 5 skills + `eval-adversary` | `/msr-mcp-new` scaffolds a server whose `tools/list` responds |
 | 6 | `docs/*`, `examples/hackathon-walkthrough.md` | Install guide followed end to end on a clean checkout |
 
 ## 14. Out of scope for v1

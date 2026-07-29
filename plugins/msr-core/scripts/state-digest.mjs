@@ -25,7 +25,7 @@ function main() {
   try {
     raw = readFileSync(statePath, "utf8");
   } catch {
-    // No STATE.md — this project isn't managed by msrOS yet. Say nothing;
+    // No STATE.md: this project isn't managed by msrOS yet. Say nothing;
     // /msr-session-start will offer /msr-init.
     return;
   }

@@ -17,7 +17,7 @@ and planning belongs to `superpowers:writing-plans`.
 - After a compaction, when you need to re-anchor.
 - When the user asks "where were we", "what's next", or "catch me up".
 
-**Do not use** when `docs/STATE.md` is absent — run `/msr-init` instead.
+**Do not use** when `docs/STATE.md` is absent, run `/msr-init` instead.
 
 ## Process
 
@@ -25,10 +25,10 @@ and planning belongs to `superpowers:writing-plans`.
 
 In this order, stopping as soon as you have enough:
 
-1. `docs/STATE.md` — the full file, not just the digest.
+1. `docs/STATE.md`, the full file, not just the digest.
 2. `git log --oneline -10` and `git status --short`.
-3. `CLAUDE.md` — conventions and priorities.
-4. `docs/HACKATHON.md` if it exists — a deadline changes every priority below it.
+3. `CLAUDE.md`, conventions and priorities.
+4. `docs/HACKATHON.md` if it exists, a deadline changes every priority below it.
 
 **Do not read source files at this stage.** You are orienting, not implementing. If a
 listed open thread needs code context, that is the approved task's job, not this one.
@@ -36,7 +36,7 @@ listed open thread needs code context, that is the approved task's job, not this
 ### 2. Reconcile state against reality
 
 `STATE.md` records what was true at last handoff. Git records what is true now. Where
-they disagree, git wins — and the disagreement itself is worth reporting.
+they disagree, git wins, and the disagreement itself is worth reporting.
 
 Specifically check:
 - Commits since the last `Recent changes` entry.
@@ -72,7 +72,7 @@ Once approved, hand off: `superpowers:writing-plans` for anything multi-step,
 
 | Thought | Reality |
 |---|---|
-| "The task is obvious, I'll just start" | Stopping is the feature. The user may have context — a demo in an hour, a changed priority — that no file records. |
+| "The task is obvious, I'll just start" | Stopping is the feature. The user may have context, a demo in an hour, a changed priority, that no file records. |
 | "I should read the source to understand properly" | That is the task's job. Reading files here spends the context you just saved. |
 | "STATE.md is stale, I'll reconstruct from git" | Report the drift, don't silently paper over it. Stale state means the last handoff was skipped, and the user should know. |
 | "I'll propose three options so the user can pick" | One proposal with a reason is a decision. Three is a survey. Give the recommendation. |
@@ -90,7 +90,7 @@ Once approved, hand off: `superpowers:writing-plans` for anything multi-step,
 
 Before ending the turn, confirm:
 
-1. You read `docs/STATE.md` and ran `git log` and `git status` — cite what they showed.
+1. You read `docs/STATE.md` and ran `git log` and `git status`, cite what they showed.
 2. Your summary names a specific current focus, not a generic restatement of the project.
 3. Exactly one task is proposed, phrased as a completable action.
 4. You have not modified any file.

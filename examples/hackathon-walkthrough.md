@@ -7,7 +7,7 @@ A full run of `msr-hack`, hour by hour. The event is invented; the shape is not.
 
 ---
 
-## Hour 0 — before any code
+## Hour 0: before any code
 
 ```bash
 mkdir medreport && cd medreport && git init
@@ -39,10 +39,10 @@ writes `docs/HACKATHON.md`:
 | Track | Requirement | Worth pursuing? |
 |---|---|---|
 | Grand prize | none | yes |
-| Sponsor: VectorDB | VectorDB used for retrieval | yes — low marginal cost |
+| Sponsor: VectorDB | VectorDB used for retrieval | yes, low marginal cost |
 
 ## Required deliverables
-- [ ] Demo video — max 3 minutes
+- [ ] Demo video, max 3 minutes
 - [ ] Public GitHub repo
 - [ ] Devpost: all 8 fields
 - [ ] Live demo URL
@@ -62,7 +62,7 @@ architecture.
 
 ---
 
-## Hour 0.5 — cut scope
+## Hour 0.5: cut scope
 
 ```
 /msr-scope 48
@@ -70,7 +70,7 @@ architecture.
 
 ```
 48 hours remaining
-− 3 hours submission tail (video, Devpost form, final deploy)
+- 3 hours submission tail (video, Devpost form, final deploy)
 = 45 working hours, across 2 people
 ```
 
@@ -78,20 +78,20 @@ Estimates are doubled, per the skill:
 
 | Feature | Serves | Weight | Est ×2 | Demo-visible |
 |---|---|---|---|---|
-| Report upload + OCR | Technical | 30% | 8h | ✅ |
-| Plain-language explanation | Impact | 35% | 6h | ✅ |
-| Safety alerts (colour-coded) | Impact | 35% | 4h | ✅ |
-| VectorDB retrieval | Sponsor | — | 5h | partly |
-| Multi-language voice | Impact | 35% | 10h | ✅ |
-| Clinician dashboard | — | 0% | 16h | ✅ |
-| Auth + accounts | — | 0% | 10h | ❌ |
+| Report upload + OCR | Technical | 30% | 8h | PASS |
+| Plain-language explanation | Impact | 35% | 6h | PASS |
+| Safety alerts (colour-coded) | Impact | 35% | 4h | PASS |
+| VectorDB retrieval | Sponsor |, | 5h | partly |
+| Multi-language voice | Impact | 35% | 10h | PASS |
+| Clinician dashboard |, | 0% | 16h | PASS |
+| Auth + accounts |, | 0% | 10h | FAIL |
 
 `docs/SCOPE.md` takes the first five. `.out-of-scope/README.md` records:
 
 ```markdown
-- Clinician dashboard — serves no criterion. 16h for zero weighted points.
-- Auth + accounts — serves no criterion and is invisible in a 3-minute demo.
-- Multi-language voice — 10h for one criterion already served by two cheaper
+- Clinician dashboard, serves no criterion. 16h for zero weighted points.
+- Auth + accounts, serves no criterion and is invisible in a 3-minute demo.
+- Multi-language voice, 10h for one criterion already served by two cheaper
   features. Promote only if we finish early. (kept scored: Impact 35%, 10h)
 ```
 
@@ -100,14 +100,14 @@ already answers that, with the reason.
 
 ---
 
-## Hours 1–30 — build
+## Hours 1 to 30: build
 
 Ordinary `msr-core` loop, once per session:
 
 ```
 /msr-session-start   → proposes one task, stops
    → superpowers:writing-plans → executing-plans
-/msr-gate            → typecheck, lint, build, test — actual output
+/msr-gate            → typecheck, lint, build, test, actual output
 /msr-handoff         → updates STATE.md, proposes a commit message
 ```
 
@@ -117,9 +117,9 @@ attempted at hour 44 is a deploy that fails at hour 44.
 A decision from hour 9, recorded in `STATE.md`:
 
 ```markdown
-- [D3] Groq Llama 3.3 70B primary with OpenRouter fallback — Groq rate-limits at
+- [D3] Groq Llama 3.3 70B primary with OpenRouter fallback, Groq rate-limits at
   30 rpm and we hit it during testing. Fallback logs every switch.
-- [D4] Added the sponsor's vector DB for the sponsor track — HACKATHON.md scores it
+- [D4] Added the sponsor's vector DB for the sponsor track, HACKATHON.md scores it
   at 15%. Not used anywhere off the demo path, and it leaves with the event.
 ```
 
@@ -128,7 +128,7 @@ remembers it happened.
 
 ---
 
-## Hour 31 — judge yourself, while you can still act
+## Hour 31: judge yourself, while you can still act
 
 The build is demoable. **This is the right time, not hour 46.**
 
@@ -150,8 +150,7 @@ Weighted total: 5.95/10
 
 ## The one fix
 Add a 20-second opening to the demo naming a specific patient scenario, and
-one paragraph to the README on who is helped. Moves Impact from 5 to ~8 —
-about +1.05 weighted points for roughly 40 minutes. Nothing else on this
+one paragraph to the README on who is helped. Moves Impact from 5 to ~8, about +1.05 weighted points for roughly 40 minutes. Nothing else on this
 list comes close per hour.
 
 ## What is being missed
@@ -164,7 +163,7 @@ cost: about an hour, at a point where an hour is still available.
 
 ---
 
-## Hour 45 — the demo
+## Hour 45: the demo
 
 ```
 /msr-demo
@@ -174,17 +173,17 @@ Storyboard against the 3-minute cap, with time allocated by criteria weight:
 
 | Segment | Time | Purpose |
 |---|---|---|
-| Problem — a real scenario | 0:00–0:25 | Impact, 35% |
-| What it does | 0:25–0:40 | |
-| Live demo | 0:40–2:10 | Technical, 30% |
-| The parsing layer | 2:10–2:40 | Innovation, 20% |
-| Impact close | 2:40–3:00 | Impact |
+| Problem, a real scenario | 0:00 to 0:25 | Impact, 35% |
+| What it does | 0:25 to 0:40 | |
+| Live demo | 0:40 to 2:10 | Technical, 30% |
+| The parsing layer | 2:10 to 2:40 | Innovation, 20% |
+| Impact close | 2:40 to 3:00 | Impact |
 
 ```
-Narration: 428 words ÷ 150 wpm = 2.85 min ≤ 3.00 cap ✅
+Narration: 428 words ÷ 150 wpm = 2.85 min ≤ 3.00 cap PASS
 Captures: docs/demo/01-problem.png … 05-close.png
 Reviewed for credentials and personal data: yes
-docs/demo/narration.srt — final timestamp 2:51 ✅
+docs/demo/narration.srt, final timestamp 2:51 PASS
 ```
 
 The problem gets 25 seconds because Impact is 35%. That allocation came from
@@ -192,19 +191,19 @@ The problem gets 25 seconds because Impact is 35%. That allocation came from
 
 ---
 
-## Hour 46 — the writeup
+## Hour 46: the writeup
 
 ```
 /msr-devpost
 ```
 
 Reads `HACKATHON.md`, `STATE.md`, and the full `git log`. "Challenges" comes from
-decision `[D3]` and the commits where the approach was reversed — not from recall at
+decision `[D3]` and the commits where the approach was reversed, not from recall at
 hour 46.
 
 ```
-Built with: verified against requirements.txt + package.json — 11/11 traced ✅
-Criteria coverage: Impact ✅ · Technical ✅ · Innovation ✅ · Presentation ✅
+Built with: verified against requirements.txt + package.json, 11/11 traced PASS
+Criteria coverage: Impact PASS · Technical PASS · Innovation PASS · Presentation PASS
 Character limits: within on all 8 fields
 ```
 
@@ -213,7 +212,7 @@ reasons.
 
 ---
 
-## Hour 47 — submit
+## Hour 47: submit
 
 ```
 /msr-ship
@@ -223,25 +222,25 @@ reasons.
 ```markdown
 | Deliverable | Constraint | Result | Evidence |
 |---|---|---|---|
-| Repo public | — | ✅ | loaded in incognito |
-| Demo URL | live | ❌ | 502 — Render cold start |
-| Video | ≤ 3:00 | ✅ | 2:51, plays |
-| Devpost fields | 8/8 | ✅ | all filled |
-| VectorDB | sponsor track | ✅ | grep: 3 imports |
-| Team on Devpost | both | ❌ | teammate not added |
+| Repo public |, | PASS | loaded in incognito |
+| Demo URL | live | FAIL | 502, Render cold start |
+| Video | ≤ 3:00 | PASS | 2:51, plays |
+| Devpost fields | 8/8 | PASS | all filled |
+| VectorDB | sponsor track | PASS | grep: 3 imports |
+| Team on Devpost | both | FAIL | teammate not added |
 
 Time remaining: 58 min (17:00 EDT / 03:00 +06)
 
-VERDICT: DO NOT SUBMIT — 2 failures.
+VERDICT: DO NOT SUBMIT, 2 failures.
 Fix order: add teammate (2 min, expires at deadline), then warm the Render
 instance and re-verify (5 min).
 ```
 
 Both failures are administrative. Both would have cost the prize. Neither is visible
-from a passing test suite — the demo URL was checked from a stale tab all afternoon, and
+from a passing test suite, the demo URL was checked from a stale tab all afternoon, and
 the missing teammate would have voided their share.
 
-Fixed, re-run, all ✅, submitted with 44 minutes to spare.
+Fixed, re-run, all PASS, submitted with 44 minutes to spare.
 
 ---
 
@@ -256,5 +255,5 @@ Fixed, re-run, all ✅, submitted with 44 minutes to spare.
 | 46 | Sourced from git | "Challenges" describes a real reversal, not filler |
 | 47 | Verified from a logged-out context | Caught a dead URL and a missing teammate |
 
-None of it made the code better. All of it made the submission score better — which is
+None of it made the code better. All of it made the submission score better, which is
 the thing being judged.

@@ -10,7 +10,7 @@ description: Use when turning a research paper into working code - extracts the 
 Extracts the implementable core of a paper and plans the smallest thing that would
 demonstrate it.
 
-Most papers contain one idea and a large amount of apparatus around it — ablations,
+Most papers contain one idea and a large amount of apparatus around it: ablations,
 baselines, dataset construction, presentation. Implementing the paper means
 implementing the idea. Confusing the two is why paper reproductions stall.
 
@@ -65,7 +65,7 @@ reading rather than proceeding.
 
 | Category | Treatment |
 |---|---|
-| **Core mechanism** | Implement this. It is usually small — often a loss term, a sampling change, or a restructured prompt. |
+| **Core mechanism** | Implement this. It is usually small, often a loss term, a sampling change, or a restructured prompt. |
 | **Apparatus** | Ablations, baselines, hyperparameter sweeps. Skip on a first pass. |
 | **Assumed infrastructure** | Pretrained models, datasets, compute. Check availability **before** planning; this is the usual blocker. |
 
@@ -134,6 +134,6 @@ The one-sentence contribution, the success criterion, and any blocker found in s
 1. `docs/papers/<slug>.md` exists with a citation and link.
 2. The contribution is stated in exactly one sentence.
 3. Core mechanism is expressed in pseudocode, ~20 lines or fewer.
-4. Data, model, and compute availability each answered concretely — not "should be fine".
+4. Data, model, and compute availability each answered concretely, not "should be fine".
 5. Success criterion names a metric, a dataset, and a number.
 6. At least one breaking assumption is named.

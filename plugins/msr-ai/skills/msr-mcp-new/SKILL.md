@@ -12,7 +12,7 @@ output.**
 
 Every tool parses its underlying command or API response into a typed structure first.
 The model receives structured JSON with known fields, not a wall of text it has to
-interpret. That parsing layer is where hallucination is prevented — not in the prompt.
+interpret. That parsing layer is where hallucination is prevented, not in the prompt.
 
 This is the DeepSIFT pattern: 155 typed forensic tools, 4/4 must-identify findings with
 zero hallucinations against a 0/4 baseline. The difference was the parsers.
@@ -21,7 +21,7 @@ zero hallucinations against a 0/4 baseline. The difference was the parsers.
 
 - Building a new MCP server.
 - Wrapping a CLI, API, or database for agent use.
-- An existing agent hallucinates over tool output — the fix is usually here, not in the
+- An existing agent hallucinates over tool output, the fix is usually here, not in the
   prompt.
 
 ## Process
@@ -33,7 +33,7 @@ Use `context7` for the MCP SDK. The protocol moves; do not write from memory.
 ### 2. Choose the language
 
 Python if the domain logic is Python, or the wrapped tools are. TypeScript if the
-consumer is a Node toolchain. Match the surrounding project — do not introduce a second
+consumer is a Node toolchain. Match the surrounding project; do not introduce a second
 runtime for one server.
 
 ### 3. Define the tools before writing code
@@ -45,7 +45,7 @@ For each tool, write down:
 | name | verb-noun, unambiguous |
 | description | when to use it **and when not to** |
 | input schema | typed, with every constraint expressed |
-| output schema | **typed** — this is the point |
+| output schema | **typed**, this is the point |
 | failure mode | what it returns when the underlying thing fails |
 
 A tool whose output schema is `{ "result": "string" }` has skipped the entire exercise.
@@ -61,7 +61,7 @@ For each tool, in this order:
 
 Never return raw stdout, raw HTML, or an unparsed API body. If the underlying output is
 genuinely unstructured, extract the fields you need and return those, plus a
-`raw_excerpt` capped at a documented length — not the whole thing.
+`raw_excerpt` capped at a documented length, not the whole thing.
 
 Where the source supports it, include provenance: which file, line, record, or URL the
 value came from. Provenance is what makes a downstream claim checkable.
@@ -109,7 +109,7 @@ The tool table, the `tools/list` output, and one example typed response per tool
 ## Verification
 
 1. `tools/list` responds and returns every declared tool. Paste the output.
-2. Every tool has a typed output schema — no bare `string` results.
+2. Every tool has a typed output schema, no bare `string` results.
 3. Each tool was called at least once, and the response validates against its schema.
    Show one response per tool.
 4. A deliberate failure was triggered on at least one tool, and it returned a typed

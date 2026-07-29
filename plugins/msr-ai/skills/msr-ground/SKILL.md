@@ -9,8 +9,7 @@ description: Use when auditing whether an AI system's claims trace to real retri
 
 Checks whether every claim the system makes actually traces to something it retrieved.
 
-An ungrounded claim is not a style problem. In the domains worth building for —
-medical, legal, financial, forensic — it is the failure that makes the system unusable.
+An ungrounded claim is not a style problem. In the domains worth building for, medical, legal, financial, forensic, it is the failure that makes the system unusable.
 
 This skill measures the rate. It does not fix it; the fix is usually in retrieval or in
 the parsing layer, and belongs to `/msr-mcp-new` or a retrieval change.
@@ -26,7 +25,7 @@ the parsing layer, and belongs to `/msr-mcp-new` or a retrieval change.
 
 ### 1. Collect a sample
 
-20–30 real outputs, including their retrieved context. Both parts are required — an
+20 to 30 real outputs, including their retrieved context. Both parts are required, an
 output without its context cannot be audited, only guessed at.
 
 If the system does not log retrieved context alongside output, **stop and fix that
@@ -36,7 +35,7 @@ first.** It is a prerequisite, and its absence is itself the finding.
 
 Split each output into individual factual assertions. One sentence often holds several.
 
-> "The patient's hemoglobin is 9.2 g/dL, below the normal range of 13.5–17.5, indicating anemia."
+> "The patient's hemoglobin is 9.2 g/dL, below the normal range of 13.5 to 17.5, indicating anemia."
 
 That is three claims: the measured value, the reference range, and the conclusion. Each
 is separately groundable, and in practice the reference range is the one that gets
@@ -60,7 +59,7 @@ deduction needs knowledge not in context, it is ungrounded.
 
 Where the system cites, verify the citation **supports the specific claim** attached to
 it. A citation pointing at a real document that does not contain the claim is worse
-than no citation — it manufactures verifiability.
+than no citation, it manufactures verifiability.
 
 ### 5. Report
 
@@ -75,7 +74,7 @@ than no citation — it manufactures verifiability.
 | Citations not supporting their claim | 3 |
 
 List every ungrounded and contradicted claim verbatim, with the context that was
-available. Then characterize the pattern — ungrounded claims usually cluster. Common
+available. Then characterize the pattern, ungrounded claims usually cluster. Common
 clusters: invented reference ranges, invented dates, invented specificity where the
 source was vague.
 
@@ -101,8 +100,8 @@ source was vague.
 ## Verification
 
 1. Sample size stated, and every output had its retrieved context available.
-2. Claim count is greater than output count — decomposition actually happened.
+2. Claim count is greater than output count, decomposition actually happened.
 3. Every ungrounded and contradicted claim is quoted verbatim with its context.
-4. Citations were opened and checked against their specific claims — state how many.
+4. Citations were opened and checked against their specific claims, state how many.
 5. Rates are numbers, not adjectives.
 6. A pattern is named, or its absence stated explicitly.

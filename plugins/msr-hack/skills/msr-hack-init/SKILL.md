@@ -33,12 +33,12 @@ Ask for the event URL if not given. From the main page, find and scrape all of:
 - submission requirements
 - any sponsor challenge pages
 
-Use `firecrawl` to scrape. Devpost splits this across tabs — `/rules`,
+Use `firecrawl` to scrape. Devpost splits this across tabs, `/rules`,
 `/details`, and the prize sidebar on the main page. **Check every one.** The criteria
 and the deliverables are rarely on the same page.
 
 If `firecrawl` fails, fall back to `WebFetch`. If that also fails, ask the user to paste
-the rules. **Never proceed on assumed criteria** — an invented rubric is worse than
+the rules. **Never proceed on assumed criteria.** An invented rubric is worse than
 none, because everything downstream will trust it.
 
 ### 2. Extract
@@ -47,7 +47,7 @@ Pull out, verbatim where possible:
 
 - **Deadline**, with timezone. Convert to the user's local time and state both.
 - **Judging criteria with weights.** If weights are not published, record them as
-  `unweighted` — do not invent numbers.
+  `unweighted`. Do not invent numbers.
 - **Prize tracks**, and what each specifically requires.
 - **Required deliverables**: video and its length cap, repo visibility, demo URL,
   required Devpost fields, any required form.
@@ -81,7 +81,7 @@ Pull out, verbatim where possible:
 |---|---|---|
 
 ## Required deliverables
-- [ ] <deliverable> — <constraint, e.g. "video, max 3 min">
+- [ ] <deliverable>, <constraint, e.g. "video, max 3 min">
 
 ## Sponsor technologies
 | Tech | Required? | Where we use it |
@@ -95,10 +95,10 @@ Pull out, verbatim where possible:
 **Target: first place.** Placing is not the goal, so this section is about the bar to
 beat, not the bar to clear.
 
-**Panel:** <who judges, and what that kind of judge rewards — or NOT FOUND>
-**Past winners:** <what the winning projects had in common — or "first running">
+**Panel:** <who judges, and what that kind of judge rewards, or NOT FOUND>
+**Past winners:** <what the winning projects had in common, or "first running">
 **The bar:** <what a first-place project at this event plausibly looks like>
-**Our differentiator:** <filled by `/msr-scope` — the one thing no other team will have>
+**Our differentiator:** <filled by `/msr-scope`, the one thing no other team will have>
 
 ## Source
 Scraped <date> from: <urls>
@@ -111,7 +111,7 @@ prompts a check; a silent one does not.
 
 Show the criteria table and the deliverables list. Flag:
 
-- any criterion with a weight above 20% — that is where effort belongs
+- any criterion with a weight above 20%. That is where effort belongs
 - any sponsor tech that is **required**, not just rewarded
 - any deliverable with a hard constraint, especially the video length cap
 - anything marked `NOT FOUND`

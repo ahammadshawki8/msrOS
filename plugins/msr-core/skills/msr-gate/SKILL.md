@@ -24,14 +24,14 @@ gate, because it manufactures confidence.
 
 Read the gate commands recorded in `CLAUDE.md` by `/msr-init`. Those are authoritative.
 
-If `CLAUDE.md` has none, detect them — see `references/gates-by-stack.md`. If detection
+If `CLAUDE.md` has none, detect them, see `references/gates-by-stack.md`. If detection
 is ambiguous, report what you checked and **ask**. Do not guess a command.
 
 ### 2. Run each gate
 
 Run them in this order, because each failure class makes later output harder to read:
 
-1. **Typecheck** — fastest, and its failures cause confusing test errors.
+1. **Typecheck**: fastest, and its failures cause confusing test errors.
 2. **Lint**
 3. **Build**
 4. **Test**
@@ -48,20 +48,20 @@ One row per gate:
 
 | Gate | Command | Result |
 |---|---|---|
-| typecheck | `npx tsc --noEmit` | ✅ pass |
-| lint | `npm run lint` | ❌ 3 errors |
-| build | `npm run build` | ✅ pass |
-| test | `pytest -q` | ❌ 2 failed, 41 passed |
+| typecheck | `npx tsc --noEmit` | PASS pass |
+| lint | `npm run lint` | FAIL 3 errors |
+| build | `npm run build` | PASS pass |
+| test | `pytest -q` | FAIL 2 failed, 41 passed |
 
 Below the table, paste the **actual output** of every failing gate. Not a summary of it.
 
-For a gate recorded as `none`, show `⬜ not configured` — never `✅`.
+For a gate recorded as `none`, show `SKIP not configured`, never `PASS`.
 
 ### 4. On failure
 
 Report and stop. Do not fix unless asked.
 
-If the user asks for a fix, invoke `superpowers:systematic-debugging` — do not start
+If the user asks for a fix, invoke `superpowers:systematic-debugging`; do not start
 patching from the error message alone.
 
 ## Rationalizations
@@ -72,21 +72,21 @@ patching from the error message alone.
 | "Typecheck failed, no point running the rest" | Run them all. One report beats four round-trips. |
 | "Tests passed last time and I only touched a comment" | Then the run is fast. Run it. |
 | "I'll summarize the failure instead of pasting it" | The exact error text is the evidence. A summary is your interpretation of it, which is what you would be asking the user to trust. |
-| "No test command is configured, so tests pass" | Not configured is `⬜`, never `✅`. Marking an absent gate as passing is the single most damaging thing this skill could do. |
+| "No test command is configured, so tests pass" | Not configured is `SKIP`, never `PASS`. Marking an absent gate as passing is the single most damaging thing this skill could do. |
 | "The build warning is probably harmless" | Report it. "Probably" is not a gate result. |
 
 ## Red Flags
 
 - Reporting a gate result without its command output.
-- A `✅` on a gate you did not actually run.
+- A `PASS` on a gate you did not actually run.
 - Fixing code inside this skill without being asked.
 - Guessing a command because none was recorded.
-- Using the word "should" about a result — as in "tests should pass now."
+- Using the word "should" about a result, as in "tests should pass now."
 
 ## Verification
 
 1. Every row in the table names the exact command that was run.
 2. Every failing gate has its verbatim output pasted below the table.
-3. Unconfigured gates show `⬜`, never `✅`.
-4. The overall verdict follows arithmetic: any `❌` means the gate run failed, no matter
+3. Unconfigured gates show `SKIP`, never `PASS`.
+4. The overall verdict follows arithmetic: any `FAIL` means the gate run failed, no matter
    how minor it looks.

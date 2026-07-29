@@ -31,10 +31,10 @@ If criteria are marked `unweighted`, weight them equally and state that you did.
 
 Judge what a judge can actually see, in this order:
 
-1. **The video** (`docs/demo/`, `narration.srt`) — most judges watch this and little else.
+1. **The video** (`docs/demo/`, `narration.srt`), most judges watch this and little else.
 2. **The Devpost writeup** (`docs/DEVPOST.md`).
-3. **The demo URL**, if one exists — try to load it.
-4. **The repo**, briefly. Assume a two-minute skim, not a code review.
+3. **The demo URL**: if one exists, try to load it.
+4. **The repo**: briefly. Assume a two-minute skim, not a code review.
 
 Work that is not visible in those four places did not happen, for scoring purposes.
 This is the most common and most expensive gap: a genuinely hard technical achievement
@@ -93,7 +93,7 @@ them.
 
 ### What is being missed
 
-Anything real the submission fails to surface — a hard problem solved but never
+Anything real the submission fails to surface, a hard problem solved but never
 mentioned, a sponsor integration not called out, an impact story present in the code
 but absent from the writeup. These are the cheapest points on the board.
 
@@ -104,7 +104,7 @@ but absent from the writeup. These are the cheapest points on the board.
 - **Never report "this is strong" as if it were the answer.** Strong and forgettable is
   fourth place. If nothing here is memorable, that is the headline finding.
 - Quote the rubric when you deduct.
-- If you could not verify something, say "could not verify" — never assume in either
+- If you could not verify something, say "could not verify", never assume in either
   direction.
 - Return the four sections in order and stop: scorecard, will-this-win, the one fix,
   what is being missed. Nothing after that.
