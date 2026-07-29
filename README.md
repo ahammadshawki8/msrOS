@@ -1,11 +1,11 @@
 # msrOS
 
-**Model Software Research Operating System** — a Claude Code plugin marketplace that
+**Model Software Research Operating System**: a Claude Code plugin marketplace that
 lets you start, resume, and ship a project without re-briefing Claude from scratch.
 
 Built for a specific workflow: rapid hackathon builds, AI/agent engineering, and
 research prototypes. Three plugins, 16 skills, 2 agents. No project code ever lives
-here — only reusable workflows.
+here, only reusable workflows.
 
 ---
 
@@ -13,7 +13,7 @@ here — only reusable workflows.
 
 Every new project starts the same way: explain the stack, explain the conventions,
 explain what you're building, explain what you already tried. Every resumed project
-starts worse — you don't remember either.
+starts worse, because you don't remember either.
 
 msrOS makes that state a **file in your repo** instead of a paragraph you retype.
 
@@ -60,17 +60,17 @@ claude plugin enable msr-ai@msros --scope project
 ## Already halfway through a project?
 
 If you forgot to set msrOS up and you're 50% in, **do not run `/msr-init`.** It's built
-for greenfield and it imposes an archetype template — which is exactly wrong for a repo
+for greenfield and it imposes an archetype template, which is exactly wrong for a repo
 that already has conventions of its own.
 
 Run **`/msr-adopt`** instead. It:
 
-- surveys `git log`, uncommitted changes, and branches to work out what's in flight —
+- surveys `git log`, uncommitted changes, and branches to work out what's in flight;
   your uncommitted diff is the strongest signal of what `Now:` should say
 - **infers conventions from your actual code**, not from a template, and where your repo
   disagrees with the archetype default, your repo wins and the difference gets recorded
-- **runs your gate commands instead of trusting `package.json`** — mid-flight projects
-  have renamed and broken scripts constantly
+- **runs your gate commands instead of trusting `package.json`**, because mid-flight
+  projects have renamed and broken scripts constantly
 - asks you six questions that no artifact can answer: what you're on, what's next,
   what's blocked, what decision you'd be annoyed to see reversed, what's deliberately
   rough, and whether there's a deadline
@@ -81,7 +81,7 @@ Run **`/msr-adopt`** instead. It:
 That fourth question is the valuable one. Git records what changed; it never records
 why. Reversed decisions are the most expensive thing a fresh session does.
 
-After `/msr-adopt`, you're on the normal loop below — skip step 1.
+After `/msr-adopt`, you're on the normal loop below, so skip step 1.
 
 ---
 
@@ -94,7 +94,7 @@ This is the main flow. Four commands, in order.
 Run this in an empty or nearly-empty repo. It:
 
 - detects your stack (Django / Flask / FastAPI / Next / Vite-React / Flutter)
-- asks which **archetype** you're building — `hackathon`, `research`, `startup`,
+- asks which **archetype** you're building: `hackathon`, `research`, `startup`,
   `backend`, `frontend`, `fullstack`, or `ai-agent`
 - writes a `CLAUDE.md` from that archetype's template, pre-filled with your defaults
 - creates `docs/STATE.md`, the file that makes every future session cheap
@@ -107,7 +107,7 @@ You answer two or three questions. You never write `CLAUDE.md` by hand again.
 Run this at the **top of every session**, including the one right after `/msr-init`.
 
 It reads `docs/STATE.md`, the last ten commits, and your `CLAUDE.md`, then tells you
-where the project actually stands and **proposes exactly one next task — and stops.**
+where the project actually stands and **proposes exactly one next task, then stops.**
 
 The stopping is deliberate. It does not start working. You approve the task, or you
 name a different one. Then it hands off to `superpowers:writing-plans` to plan it and
@@ -116,7 +116,7 @@ name a different one. Then it hands off to `superpowers:writing-plans` to plan i
 ### 3. `/msr-gate`
 
 Run before you commit anything meaningful. It detects your stack and runs that stack's
-real checks — typecheck, lint, build, test — and shows you **the actual command output**.
+real checks (typecheck, lint, build, test) and shows you **the actual command output**.
 
 It never says "looks good." Every msrOS skill terminates in evidence: output you can
 read, a file that exists, a check that passed. That rule is the whole reason to trust
@@ -126,13 +126,13 @@ the rest of it.
 
 Run at the **end of every session**. It:
 
-- updates the digest in `docs/STATE.md` — what you're on, what's next, what's blocked
+- updates the digest in `docs/STATE.md`: what you're on, what's next, what's blocked
 - appends any decisions you made and why
 - updates `CLAUDE.md` if a convention changed
 - proposes a commit message
 
-Next session, `/msr-session-start` picks up exactly where this left off. That loop —
-`session-start` → work → `gate` → `handoff` — is the core of msrOS.
+Next session, `/msr-session-start` picks up exactly where this left off. That loop
+(`session-start` → work → `gate` → `handoff`) is the core of msrOS.
 
 ---
 
@@ -149,18 +149,18 @@ containing:
 - the deadline
 - **the judging criteria, with their weights**
 - prize tracks and what each one requires
-- required deliverables — video length cap, repo visibility, which Devpost fields
+- required deliverables: video length cap, repo visibility, which Devpost fields
 - sponsor technologies you must actually use
 
 Do this first, before you write a line of code. Most hackathon losses aren't code
-quality — they're a sponsor tech you didn't use or a deliverable you didn't notice.
+quality; they're a sponsor tech you didn't use or a deliverable you didn't notice.
 Extracting the rubric mechanically, once, and then building against *that*, is the
 entire game.
 
 ### 2. `/msr-scope <hours-remaining>`
 
 Weighs your feature list against the criteria weights and the clock, then produces a
-build list — and an explicit `.out-of-scope/` parking lot for everything you're
+build list, plus an explicit `.out-of-scope/` parking lot for everything you're
 consciously **not** building. Writing down what you cut is what stops you from
 quietly un-cutting it at 3am.
 
@@ -171,17 +171,17 @@ screenshots and recordings via Playwright and Chrome DevTools.
 
 ### 4. `/msr-devpost`
 
-Generates every Devpost field — Inspiration, What it does, How we built it, Challenges,
+Generates every Devpost field: Inspiration, What it does, How we built it, Challenges,
 Accomplishments, What we learned, What's next, Built with.
 
-It sources these from `HACKATHON.md`, `STATE.md`, and your `git log` — **not from
+It sources these from `HACKATHON.md`, `STATE.md`, and your `git log`, **not from
 memory**. The writeup describes what you actually built. Every "Built with" entry
 traces to a real dependency.
 
 ### 5. `judge-simulator` (agent)
 
-Scores your project against the weighted criteria **in your `HACKATHON.md`** — not
-generic hackathon advice — and returns a weighted total plus the single
+Scores your project against the weighted criteria **in your `HACKATHON.md`**, not
+generic hackathon advice, and returns a weighted total plus the single
 highest-leverage fix remaining.
 
 It refuses to run if `HACKATHON.md` is missing, rather than scoring you against
@@ -196,14 +196,14 @@ responds, video uploaded, every criterion addressed. Pass/fail table, no vibes.
 
 ## Building an AI or agent project
 
-Enable `msr-ai`. These are order-independent — reach for what you need.
+Enable `msr-ai`. These are order-independent, so reach for what you need.
 
 | Command | Use it when |
 |---|---|
 | `/msr-mcp-new` | Scaffolding an MCP server. Uses the DeepSIFT pattern: tool output is parsed into **typed structured JSON before the model ever sees it**, which is what keeps agents from hallucinating over raw tool text. |
 | `/msr-eval` | You need a golden set and per-case assertions instead of eyeballing outputs. |
 | `/msr-ground` | Auditing whether every claim your system makes traces back to a retrieved source. Citation checking, confidence scoring. |
-| `/msr-bench` | Logging experiments reproducibly — run id, params, results, environment — to `bench/runs.jsonl`. |
+| `/msr-bench` | Logging experiments reproducibly (run id, params, results, environment) to `bench/runs.jsonl`. |
 | `/msr-paper` | Turning a paper into an implementable core and a prototype plan. |
 | `eval-adversary` (agent) | Trying to break your AI feature on purpose: prompt injection, edge cases, refusal probing, hallucination bait. |
 
@@ -225,16 +225,16 @@ maintains it, and you rarely touch it by hand.
 <!-- msr:digest:end -->
 
 ## Decisions
-- [D1] ERNIE primary, Groq Llama 3.3 70B fallback — ERNIE rate-limits at 60 rpm.
+- [D1] ERNIE primary, Groq Llama 3.3 70B fallback; ERNIE rate-limits at 60 rpm.
 
 ## Open threads
 - [T1] gTTS latency >4s for Bengali; consider caching.
 
 ## Recent changes
-- [C1] 2026-07-28 — Added /api/v1/explain, Render deploy green.
+- [C1] 2026-07-28: Added /api/v1/explain, Render deploy green.
 ```
 
-A SessionStart hook injects **only the digest block** — about six lines — into every
+A SessionStart hook injects **only the digest block**, about six lines, into every
 new session. The sections below it load only when a skill actually reads the file.
 
 That split is the point. Auto-loading full project state on every session start is the
@@ -248,7 +248,7 @@ for roughly 5% of the tokens.
 | Command | Plugin | What it does |
 |---|---|---|
 | `/msr-init` | core | Bootstrap `CLAUDE.md` + `STATE.md` for a **new** project |
-| `/msr-adopt` | core | Onboard a project **already underway** — reconstructs state from git + interview |
+| `/msr-adopt` | core | Onboard a project **already underway**: reconstructs state from git + interview |
 | `/msr-session-start` | core | Summarize state, propose one next task, stop |
 | `/msr-gate` | core | Stack-aware typecheck / lint / build / test |
 | `/msr-handoff` | core | Update state, propose commit message |
@@ -308,15 +308,15 @@ Longer notes in [`docs/token-discipline.md`](docs/token-discipline.md).
 
 ## Status
 
-All six build phases complete — **16 skills, 2 agents, 1 hook, 7 archetypes.**
+All six build phases complete: **16 skills, 2 agents, 1 hook, 7 archetypes.**
 
 | Phase | Contents | Status |
 |---|---|---|
 | 1 | Repo skeleton, marketplace + plugin manifests | ✅ |
 | 2 | `msr-core` skills, `STATE.md`, SessionStart hook | ✅ |
 | 3 | Seven `CLAUDE.md` archetypes | ✅ |
-| 4 | `msr-hack` — 5 skills + `judge-simulator` | ✅ |
-| 5 | `msr-ai` — 5 skills + `eval-adversary` | ✅ |
+| 4 | `msr-hack`: 5 skills + `judge-simulator` | ✅ |
+| 5 | `msr-ai`: 5 skills + `eval-adversary` | ✅ |
 | 6 | Full docs + worked hackathon example | ✅ |
 
 **Not yet proven on a live event.** `/msr-hack-init` has been built against Devpost's
@@ -351,7 +351,7 @@ msrOS/
 ```
 
 Components live at the **plugin root**. Only `plugin.json` goes inside
-`.claude-plugin/` — putting components there makes the plugin load with no components
+`.claude-plugin/`; putting components there makes the plugin load with no components
 and no error message.
 
 Hook scripts are Node (`.mjs`), never `.sh`. This is developed on Windows, where a bash
