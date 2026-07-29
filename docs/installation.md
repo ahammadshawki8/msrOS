@@ -157,6 +157,41 @@ Use full explicit paths and no `pluginRoot`:
 { "name": "msr-core", "source": "./plugins/msr-core" }
 ```
 
+### `Marketplace file not found` at a doubled-up path
+
+```
+Marketplace file not found at
+  ~/.claude/plugins/marketplaces/ahammadshawki8-msrOS/C:\Users\Shawki\Desktop\msrOS
+```
+
+Two paths concatenated. This happens when you register the marketplace **locally first**
+(`claude plugin marketplace add "./"`) and later re-add it from GitHub under the same
+name. The local absolute path survives as a `path` key inside the entry in
+`~/.claude/settings.json`:
+
+```json
+"extraKnownMarketplaces": {
+  "msros": {
+    "source": {
+      "source": "github",
+      "repo": "ahammadshawki8/msrOS",
+      "path": "C:\\Users\\Shawki\\Desktop\\msrOS"   ← delete this line
+    }
+  }
+}
+```
+
+`path` is meant to name a **subdirectory inside the repo**, so an absolute path gets
+joined onto the cache directory and resolves nowhere. Delete the `path` key, then run
+`claude plugin marketplace update msros`.
+
+Note that `~/.claude/plugins/known_marketplaces.json` keeps its own, correct copy of the
+entry — the two registries disagree, and only the `settings.json` one is consulted for
+the source. Fixing the wrong file changes nothing.
+
+To avoid this entirely, use a distinct name for the local development copy so it never
+collides with the GitHub registration.
+
 ### Plugin installs but no skills appear
 
 Components must be at the **plugin root**, not inside `.claude-plugin/`. Only
